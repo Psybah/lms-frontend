@@ -3,8 +3,7 @@ import {
     Certificate01Icon,
     Home01Icon,
     QrCode01Icon,
-    Settings02Icon,
-    UserCircleIcon,
+    Logout01Icon,
 } from "hugeicons-react";
 import {
     Sidebar,
@@ -14,30 +13,27 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
-    SidebarGroup,
-    SidebarGroupLabel,
-    SidebarGroupContent,
 } from "@/components/ui/sidebar";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const items = [
     {
-        title: "Overview",
+        title: "Home",
         url: "/dashboard",
         icon: Home01Icon,
     },
     {
-        title: "My Learning",
+        title: "Courses",
         url: "/dashboard/learning",
         icon: BookOpen01Icon,
     },
     {
-        title: "Entry Passes",
+        title: "Passes",
         url: "/dashboard/passes",
         icon: QrCode01Icon,
     },
     {
-        title: "Certificates",
+        title: "Awards",
         url: "/dashboard/certificates",
         icon: Certificate01Icon,
     },
@@ -48,53 +44,40 @@ export function AppSidebar() {
     const location = useLocation();
 
     return (
-        <Sidebar collapsible="icon" className="border-r border-border">
-            <SidebarHeader className="p-4">
-                <div className="flex items-center gap-3 px-2 py-2">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                        <BookOpen01Icon size={20} />
-                    </div>
-                    <span className="text-lg font-bold tracking-tight group-data-[collapsible=icon]:hidden">
-                        LMS Portal
-                    </span>
-                </div>
+        <Sidebar collapsible="none" className="w-20 bg-slate-100 p-0 overflow-visible">
+            <SidebarHeader className="flex items-center justify-center pt-10 pb-6">
+                <img src="/logo.png" alt="LMS Logo" className="h-10 w-10 object-contain" />
             </SidebarHeader>
-            <SidebarContent>
-                <SidebarGroup>
-                    <SidebarGroupLabel className="px-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground group-data-[collapsible=icon]:hidden">
-                        Main Menu
-                    </SidebarGroupLabel>
-                    <SidebarGroupContent>
-                        <SidebarMenu>
-                            {items.map((item) => (
-                                <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton
-                                        isActive={location.pathname === item.url}
-                                        onClick={() => navigate(item.url)}
-                                        tooltip={item.title}
-                                        className="flex items-center gap-3 px-4 py-6 transition-all duration-200 hover:bg-accent/50 data-[active=true]:bg-primary/10 data-[active=true]:text-primary"
-                                    >
-                                        <item.icon size={22} />
-                                        <span className="font-medium">{item.title}</span>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                            ))}
-                        </SidebarMenu>
-                    </SidebarGroupContent>
-                </SidebarGroup>
-            </SidebarContent>
-            <SidebarFooter className="p-4 border-t border-border">
-                <SidebarMenu>
-                    <SidebarMenuItem>
-                        <SidebarMenuButton className="flex items-center gap-3 px-4 py-6">
-                            <UserCircleIcon size={22} />
-                            <div className="flex flex-col group-data-[collapsible=icon]:hidden">
-                                <span className="text-sm font-semibold">Alex Johnson</span>
-                                <span className="text-xs text-muted-foreground">Student</span>
-                            </div>
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
+            <SidebarContent className="px-2 overflow-visible">
+                <SidebarMenu className="gap-4">
+                    {items.map((item) => (
+                        <SidebarMenuItem key={item.title}>
+                            <SidebarMenuButton
+                                isActive={location.pathname === item.url}
+                                onClick={() => navigate(item.url)}
+                                className="flex flex-col items-center justify-center gap-2 h-auto py-3 px-0 transition-all duration-300 hover:bg-white data-[active=true]:bg-primary data-[active=true]:text-white data-[active=true]:shadow-md rounded-2xl group"
+                            >
+                                <div className="flex flex-col items-center gap-2">
+                                    <item.icon
+                                        size={24}
+                                        className="transition-transform duration-300 group-data-[active=true]:text-white text-slate-500"
+                                    />
+                                    <span className="text-[9px] font-medium uppercase tracking-widest leading-none group-data-[active=true]:text-white text-slate-500">
+                                        {item.title}
+                                    </span>
+                                </div>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    ))}
                 </SidebarMenu>
+            </SidebarContent>
+            <SidebarFooter className="pb-10 flex items-center justify-center">
+                <button className="flex flex-col items-center justify-center gap-2 text-slate-400 hover:text-destructive transition-all duration-300">
+                    <Logout01Icon size={24} />
+                    <span className="text-[9px] font-medium uppercase tracking-widest leading-none">
+                        Logout
+                    </span>
+                </button>
             </SidebarFooter>
         </Sidebar>
     );
