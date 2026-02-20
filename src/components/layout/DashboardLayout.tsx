@@ -11,7 +11,7 @@ export function DashboardLayout() {
             <div className="flex h-screen w-full bg-slate-100 overflow-hidden font-sans">
                 <AppSidebar />
                 <SidebarInset className="flex flex-col bg-slate-100 overflow-hidden">
-                    <div className="flex-1 m-4 rounded-3xl bg-white border border-slate-200 overflow-hidden flex flex-col">
+                    <div className="flex-1 my-3 mr-3 rounded-3xl bg-white border border-slate-200 overflow-hidden flex flex-col">
                         <header className="flex h-20 shrink-0 items-center justify-between px-10 border-b border-slate-100">
                             <div className="flex items-center gap-3 w-1/3">
                                 <div className="relative group w-full max-w-sm">

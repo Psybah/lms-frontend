@@ -1,80 +1,14 @@
 import {
     BookOpen01Icon,
-    Certificate01Icon,
-    Mortarboard01Icon,
-    Clock01Icon,
     ArrowRight01Icon,
-    Calendar01Icon,
+    Calendar01Icon, // Changed from Calendar03Icon
 } from "hugeicons-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { dashboardStats, continuousLearning, upcomingClasses } from "@/data/dashboard";
 
 export default function Overview() {
-    const stats = [
-        {
-            title: "Current Enrollments",
-            value: "3",
-            icon: BookOpen01Icon,
-        },
-        {
-            title: "Completed Courses",
-            value: "12",
-            icon: Mortarboard01Icon,
-        },
-        {
-            title: "Certificates Ready",
-            value: "8",
-            icon: Certificate01Icon,
-        },
-        {
-            title: "Next Learning Session",
-            value: "2h 15m",
-            icon: Clock01Icon,
-        },
-    ];
-
-    const continuousLearning = [
-        {
-            title: "Advanced Physical Safety 201",
-            module: "Module 3: Emergency Protocol",
-            progress: "65%",
-        },
-        {
-            title: "Workplace Ergonomics",
-            module: "Module 1: Introduction",
-            progress: "12%",
-        },
-        {
-            title: "Cybersecurity Fundamentals",
-            module: "Module 4: Phishing Scams",
-            progress: "88%",
-        },
-        {
-            title: "Leadership & Management",
-            module: "Module 2: Team Building",
-            progress: "45%",
-        },
-    ];
-
-    const upcomingClasses = [
-        {
-            title: "Fire Safety Drill",
-            date: "Tomorrow, 10:00 AM",
-            type: "Practical",
-        },
-        {
-            title: "Network Administration",
-            date: "Friday, 2:30 PM",
-            type: "Theory",
-        },
-        {
-            title: "Project Management 101",
-            date: "Mon, 24 Feb, 9:00 AM",
-            type: "Virtual",
-        },
-    ];
-
     return (
         <div className="flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="flex items-center justify-between px-2">
@@ -86,7 +20,7 @@ export default function Overview() {
 
             <div className="bg-slate-100 p-4 rounded-[2rem]">
                 <div className="grid gap-4 md:grid-cols-4">
-                    {stats.map((stat) => (
+                    {dashboardStats.map((stat) => (
                         <Card key={stat.title} className="border-none bg-white rounded-2xl overflow-hidden shadow-none">
                             <CardContent className="p-6 flex flex-col gap-4 text-primary">
                                 <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">

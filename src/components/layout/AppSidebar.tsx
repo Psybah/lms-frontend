@@ -49,20 +49,22 @@ export function AppSidebar() {
                 <img src="/logo.png" alt="LMS Logo" className="h-10 w-10 object-contain" />
             </SidebarHeader>
             <SidebarContent className="px-2 overflow-visible">
-                <SidebarMenu className="gap-4">
+                <SidebarMenu className="gap-2">
                     {items.map((item) => (
                         <SidebarMenuItem key={item.title}>
                             <SidebarMenuButton
                                 isActive={location.pathname === item.url}
                                 onClick={() => navigate(item.url)}
-                                className="flex flex-col items-center justify-center gap-2 h-auto py-3 px-0 transition-all duration-300 hover:bg-white data-[active=true]:bg-primary data-[active=true]:text-white data-[active=true]:shadow-md rounded-2xl group"
+                                className="flex flex-col items-center justify-center gap-2 h-auto py-3 px-0 transition-all duration-300 bg-transparent hover:bg-transparent data-[active=true]:bg-transparent group"
                             >
                                 <div className="flex flex-col items-center gap-2">
-                                    <item.icon
-                                        size={24}
-                                        className="transition-transform duration-300 group-data-[active=true]:text-white text-slate-500"
-                                    />
-                                    <span className="text-[9px] font-medium uppercase tracking-widest leading-none group-data-[active=true]:text-white text-slate-500">
+                                    <div className="h-12 w-12 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:bg-slate-200 group-data-[active=true]:bg-primary group-data-[active=true]:shadow-md">
+                                        <item.icon
+                                            size={24}
+                                            className="transition-transform duration-300 group-data-[active=true]:text-white text-slate-500"
+                                        />
+                                    </div>
+                                    <span className="text-[9px] font-medium uppercase tracking-widest leading-none group-data-[active=true]:text-primary text-slate-500">
                                         {item.title}
                                     </span>
                                 </div>
