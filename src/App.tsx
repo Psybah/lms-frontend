@@ -8,6 +8,7 @@ import Overview from "./pages/dashboard/Overview";
 import MyLearning from "./pages/dashboard/MyLearning";
 import EntryPasses from "./pages/dashboard/EntryPasses";
 import Certificates from "./pages/dashboard/Certificates";
+import CourseDetails from "@/pages/dashboard/CourseDetails";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<Overview />} />
             <Route path="learning" element={<MyLearning />} />
+            <Route path="learning/:id" element={<CourseDetails />} />
             <Route path="passes" element={<EntryPasses />} />
             <Route path="certificates" element={<Certificates />} />
           </Route>
