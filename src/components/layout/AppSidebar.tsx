@@ -14,7 +14,19 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const items = [
     {
@@ -42,6 +54,12 @@ const items = [
 export function AppSidebar() {
     const navigate = useNavigate();
     const location = useLocation();
+    const [logoutOpen, setLogoutOpen] = useState(false);
+
+    const handleLogout = () => {
+        setLogoutOpen(false);
+        navigate("/login");
+    };
 
     return (
         <Sidebar collapsible="none" className="w-20 bg-slate-100 p-0 overflow-visible">
@@ -74,12 +92,37 @@ export function AppSidebar() {
                 </SidebarMenu>
             </SidebarContent>
             <SidebarFooter className="pb-10 flex items-center justify-center">
-                <button className="flex flex-col items-center justify-center gap-2 text-slate-400 hover:text-destructive transition-all duration-300">
-                    <Logout01Icon size={24} />
-                    <span className="text-[10px] font-normal leading-none">
-                        Logout
-                    </span>
-                </button>
+                <AlertDialog open={logoutOpen} onOpenChange={setLogoutOpen}>
+                    <AlertDialogTrigger asChild>
+                        <button className="flex flex-col items-center justify-center gap-2 text-slate-400 hover:text-destructive transition-all duration-300">
+                            <Logout01Icon size={24} />
+                            <span className="text-[10px] font-normal leading-none">
+                                Logout
+                            </span>
+                        </button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent className="rounded-2xl border-slate-100 shadow-xl max-w-sm">
+                        <AlertDialogHeader>
+                            <AlertDialogTitle className="text-lg font-medium text-slate-900">
+                                Sign out?
+                            </AlertDialogTitle>
+                            <AlertDialogDescription className="text-slate-500 font-normal text-sm">
+                                You'll need to sign in again to access your learning dashboard.
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter className="gap-2 sm:gap-2">
+                            <AlertDialogCancel className="rounded-full h-10 border-slate-200 text-slate-500 font-normal">
+                                Stay signed in
+                            </AlertDialogCancel>
+                            <AlertDialogAction
+                                onClick={handleLogout}
+                                className="rounded-full h-10 bg-destructive hover:bg-destructive/90 text-white font-normal"
+                            >
+                                Sign out
+                            </AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
             </SidebarFooter>
         </Sidebar>
     );

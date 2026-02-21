@@ -8,6 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Download01Icon, Share01Icon, Cancel01Icon } from "hugeicons-react";
 import { Certificate } from "@/data/certificates";
+import jsPDF from "jspdf";
 
 interface CertificateViewerProps {
     certificate: Certificate | null;
@@ -20,19 +21,24 @@ export function CertificateViewer({ certificate, open, onOpenChange }: Certifica
 
     const handleDownload = async () => {
         try {
-            const response = await fetch(certificate.imageUrl);
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `${certificate.courseTitle}_Certificate.pdf`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
+            await new Promise<void>((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = "anonymous";
+                img.onload = () => {
+                    const pdf = new jsPDF({
+                        orientation: img.width > img.height ? "landscape" : "portrait",
+                        unit: "px",
+                        format: [img.width, img.height],
+                    });
+                    pdf.addImage(img, "JPEG", 0, 0, img.width, img.height);
+                    pdf.save(`${certificate.courseTitle}_Certificate.pdf`);
+                    resolve();
+                };
+                img.onerror = reject;
+                img.src = certificate.imageUrl;
+            });
         } catch (error) {
-            console.error("Download failed:", error);
-            // Fallback
+            console.error("PDF generation failed:", error);
             const link = document.createElement('a');
             link.href = certificate.imageUrl;
             link.target = "_blank";

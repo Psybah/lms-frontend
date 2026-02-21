@@ -1,33 +1,44 @@
 import { Button } from "@/components/ui/button";
 import { Download01Icon } from "hugeicons-react";
 import { Certificate } from "@/data/certificates";
+import jsPDF from "jspdf";
 
 interface CertificateCardProps {
     certificate: Certificate;
     onView: (certificate: Certificate) => void;
 }
 
+async function downloadCertificateAsPDF(certificate: Certificate) {
+    return new Promise<void>((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.onload = () => {
+            const pdf = new jsPDF({
+                orientation: img.width > img.height ? "landscape" : "portrait",
+                unit: "px",
+                format: [img.width, img.height],
+            });
+            pdf.addImage(img, "JPEG", 0, 0, img.width, img.height);
+            pdf.save(`${certificate.courseTitle}_Certificate.pdf`);
+            resolve();
+        };
+        img.onerror = reject;
+        img.src = certificate.imageUrl;
+    });
+}
+
 export function CertificateCard({ certificate, onView }: CertificateCardProps) {
     const handleDownload = async (e: React.MouseEvent) => {
         e.stopPropagation();
         try {
-            const response = await fetch(certificate.imageUrl);
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `${certificate.courseTitle}_Certificate.jpg`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
+            await downloadCertificateAsPDF(certificate);
         } catch (error) {
-            console.error("Download failed:", error);
-            // Fallback for cross-origin or other issues
+            console.error("PDF generation failed:", error);
+            // Fallback: direct download
             const link = document.createElement('a');
             link.href = certificate.imageUrl;
             link.target = "_blank";
-            link.download = `${certificate.courseTitle}_Certificate.jpg`;
+            link.download = `${certificate.courseTitle}_Certificate.pdf`;
             link.click();
         }
     };

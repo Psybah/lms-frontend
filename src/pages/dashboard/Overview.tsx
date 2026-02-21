@@ -7,7 +7,7 @@ export default function Overview() {
         <div className="flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="flex items-center justify-between px-2">
                 <div className="space-y-1">
-                    <h1 className="text-3xl font-medium tracking-tight text-slate-800">Overview Dashboard</h1>
+                    <h1 className="text-3xl font-medium tracking-tight text-slate-800">Overview</h1>
                     <p className="text-slate-400 font-medium text-sm">Manage and track your learning progress and certifications.</p>
                 </div>
             </div>

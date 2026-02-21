@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Search01Icon } from "hugeicons-react";
+import { Link } from "react-router-dom";
+import { Search01Icon, BookOpen01Icon, FavouriteIcon } from "hugeicons-react";
 import { courses } from "@/data/courses";
 import { CourseCard } from "@/components/dashboard/course/CourseCard";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export default function MyLearning() {
@@ -13,20 +15,12 @@ export default function MyLearning() {
     // Mock purchased courses (e.g., first course)
     // In a real app, this would come from a user state or API
     const purchasedCourseIds = ["1", "3"];
-
-    const allCoursesWithLockState = courses.map(course => ({
-        ...course,
-        isUnlocked: purchasedCourseIds.includes(course.id)
-    }));
-
+    const allCoursesWithLockState = courses.map(course => ({ ...course, isUnlocked: purchasedCourseIds.includes(course.id) }));
     const myCourses = allCoursesWithLockState.filter(c => c.isUnlocked);
     const hasPurchasedCourses = myCourses.length > 0;
-
     const currentCourses = activeTab === 'my-courses' ? myCourses : allCoursesWithLockState;
-
     const filteredCourses = currentCourses.filter((course) => {
-        const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            course.description.toLowerCase().includes(searchQuery.toLowerCase());
+        const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase()) || course.description.toLowerCase().includes(searchQuery.toLowerCase());
         const matchesCategory = selectedCategory === "All Courses" || course.category === selectedCategory;
         return matchesSearch && matchesCategory;
     });
@@ -43,14 +37,11 @@ export default function MyLearning() {
                             {activeTab === 'my-courses' ? "My Learning" : "Explore Courses"}
                         </h1>
                         <p className="text-slate-500 font-medium text-sm">
-                            {activeTab === 'my-courses'
-                                ? "Continue your educational journey where you left off."
-                                : "Choose from our curated selection of premium educational paths."}
+                            {activeTab === 'my-courses' ? "Continue your educational journey where you left off." : "Choose from our curated selection of premium educational paths."}
                         </p>
                     </div>
-
-                    <div className="flex items-center gap-3 lg:w-96">
-                        <div className="relative group w-full">
+                    <div className="flex items-center gap-3">
+                        <div className="relative group lg:w-72">
                             <Search01Icon size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors" />
                             <input
                                 type="text"
@@ -62,7 +53,6 @@ export default function MyLearning() {
                         </div>
                     </div>
                 </div>
-
                 {hasPurchasedCourses && (
                     <div className="flex items-center gap-8 border-b border-slate-100">
                         <button
@@ -95,40 +85,90 @@ export default function MyLearning() {
                     </div>
                 )}
             </div>
-
             {/* Filter Chips */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-1 px-2 no-scrollbar">
-                {categories.map((category) => (
-                    <Badge
-                        key={category}
-                        variant={selectedCategory === category ? "default" : "secondary"}
-                        onClick={() => setSelectedCategory(category)}
-                        className={`px-5 py-2 rounded-xl text-xs font-medium whitespace-nowrap cursor-pointer transition-all border shadow-none ${selectedCategory === category
-                            ? "bg-accent/70 text-primary hover:bg-accent/60 border-accent"
-                            : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-900 border-slate-100"
-                            }`}
-                    >
-                        {category}
-                    </Badge>
-                ))}
-            </div>
-
-            {/* Grid Section */}
-            {filteredCourses.length > 0 ? (
-                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-                    {filteredCourses.map((course) => (
-                        <CourseCard key={course.id} course={course} />
+            {activeTab === 'catalog' && (
+                <div className="flex items-center gap-2 overflow-x-auto pb-1 px-2 no-scrollbar">
+                    {categories.map((category) => (
+                        <Badge
+                            key={category}
+                            variant={selectedCategory === category ? "default" : "secondary"}
+                            onClick={() => setSelectedCategory(category)}
+                            className={`px-5 py-2 rounded-xl text-xs font-medium whitespace-nowrap cursor-pointer transition-all border shadow-none ${selectedCategory === category
+                                    ? "bg-accent/70 text-primary hover:bg-accent/60 border-accent"
+                                    : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-900 border-slate-100"
+                                }`}
+                        >
+                            {category}
+                        </Badge>
                     ))}
                 </div>
-            ) : (
-                <div className="flex flex-col items-center justify-center py-20 text-center bg-slate-50 rounded-[2.5rem] border border-dashed border-slate-200">
-                    <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center mb-4 shadow-sm">
-                        <Search01Icon size={24} className="text-slate-300" />
-                    </div>
-                    <h3 className="text-lg font-medium text-slate-900">No courses found</h3>
-                    <p className="text-sm text-slate-400 max-w-xs mt-1 font-medium">Try adjusting your search or filters to find what you're looking for.</p>
-                </div>
             )}
+            {/* Grid Section */}
+            {activeTab === 'catalog' ? (
+                filteredCourses.length > 0 ? (
+                    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+                        {filteredCourses.map((course) => (
+                            <CourseCard key={course.id} course={course} />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="flex flex-col items-center justify-center py-20 text-center bg-slate-50 rounded-[2.5rem] border border-dashed border-slate-200">
+                        <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center mb-4 shadow-sm">
+                            <Search01Icon size={24} className="text-slate-300" />
+                        </div>
+                        <h3 className="text-lg font-medium text-slate-900">No courses found</h3>
+                        <p className="text-sm text-slate-400 max-w-xs mt-1 font-medium">Try adjusting your search or filters to find what you're looking for.</p>
+                    </div>
+                )
+            ) : (
+                myCourses.length === 0 ? (
+                    <MyCoursesEmptyState />
+                ) : (
+                    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+                        {myCourses.map((course) => (
+                            <CourseCard key={course.id} course={course} />
+                        ))}
+                    </div>
+                )
+            )}
+        </div>
+    );
+}
+
+function CatalogEmptyState() {
+    return (
+        <div className="flex flex-col items-center justify-center py-24 text-center animate-in fade-in zoom-in-95 duration-500">
+            <div className="h-20 w-20 rounded-full bg-slate-50 flex items-center justify-center text-slate-200 mb-6">
+                <BookOpen01Icon size={40} />
+            </div>
+            <h2 className="text-2xl font-medium text-slate-900 mb-2">No Courses Available</h2>
+            <p className="text-slate-500 max-w-sm mx-auto mb-8 font-medium text-sm leading-relaxed">
+                Our course catalog is being updated. Check back soon for new programmes and training opportunities.
+            </p>
+            <Button variant="outline" className="h-12 px-8 rounded-full font-medium border-slate-200 text-slate-600 hover:bg-slate-50">
+                Notify Me When Available
+            </Button>
+        </div>
+    );
+}
+
+function MyCoursesEmptyState() {
+    return (
+        <div className="flex flex-col items-center justify-center py-24 text-center animate-in fade-in zoom-in-95 duration-500">
+            <div className="h-20 w-20 rounded-full bg-slate-50 flex items-center justify-center text-slate-200 mb-6">
+                <FavouriteIcon size={40} />
+            </div>
+            <h2 className="text-2xl font-medium text-slate-900 mb-2">No Enrolled Courses</h2>
+            <p className="text-slate-500 max-w-sm mx-auto mb-8 font-medium text-sm leading-relaxed">
+                You haven't enrolled in any courses yet. Browse the catalog to find your next learning path.
+            </p>
+            <div className="flex items-center gap-3 flex-wrap justify-center">
+                <Link to="/dashboard/learning">
+                    <Button className="h-12 px-8 rounded-full bg-primary hover:bg-primary/90 text-white font-medium transition-all shadow-lg shadow-primary/10">
+                        <BookOpen01Icon size={16} className="mr-2" /> Browse Catalog
+                    </Button>
+                </Link>
+            </div>
         </div>
     );
 }
