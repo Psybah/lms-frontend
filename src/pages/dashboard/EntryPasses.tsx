@@ -1,40 +1,54 @@
 import { Link } from "react-router-dom";
-import { Ticket01Icon, Search01Icon } from "hugeicons-react";
+import {
+    Ticket01Icon,
+    Search01Icon,
+    Calendar01Icon
+} from "hugeicons-react";
 import { Button } from "@/components/ui/button";
+import { entryPasses } from "@/data/entry-passes";
+import { EntryPassCard } from "@/components/dashboard/entry-passes/EntryPassCard";
 
 export default function EntryPasses() {
     return (
-        <div className="flex flex-col items-center justify-center min-h-[60vh] animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <div className="bg-white p-12 rounded-[3.5rem] border border-slate-100 shadow-sm max-w-lg w-full text-center space-y-8">
-                <div className="relative mx-auto w-24 h-24">
-                    <div className="absolute inset-0 bg-primary/5 rounded-full animate-pulse" />
-                    <div className="relative flex items-center justify-center w-full h-full bg-white rounded-full border-2 border-slate-50 shadow-inner text-primary">
-                        <Ticket01Icon size={40} />
+        <div className="flex flex-col gap-8 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-20">
+            {/* Elegant Hero Section */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 px-2">
+                <div className="flex items-center gap-5">
+                    <div className="space-y-1">
+                        <h1 className="text-3xl font-medium tracking-tight text-slate-900">Entry Passes</h1>
+                        <p className="text-slate-500 font-medium text-sm">Access your physical workshop and event entry tickets.</p>
                     </div>
                 </div>
 
-                <div className="space-y-3">
-                    <h2 className="text-3xl font-medium text-slate-900 tracking-tight">No Active Passes</h2>
-                    <p className="text-slate-500 font-medium leading-relaxed">
+                <div className="flex items-center gap-3">
+                </div>
+            </div>
+
+            {entryPasses.length === 0 ? (
+                /* Clean Hero-style Empty State */
+                <div className="flex flex-col items-center justify-center py-20 text-center animate-in fade-in zoom-in-95 duration-500">
+                    <div className="h-20 w-20 rounded-full bg-slate-50 flex items-center justify-center text-slate-200 mb-6">
+                        <Ticket01Icon size={40} />
+                    </div>
+                    <h2 className="text-2xl font-medium text-slate-900 mb-2">No Active Passes</h2>
+                    <p className="text-slate-500 max-w-sm mx-auto mb-8 font-medium text-sm leading-relaxed px-4">
                         Your physical workshop and event entry passes will appear here once you register for our upcoming on-site training sessions.
                     </p>
-                </div>
-
-                <div className="pt-4">
                     <Link to="/dashboard/learning">
-                        <Button className="h-14 px-8 rounded-full bg-primary hover:bg-primary/90 text-white font-medium text-base transition-all shadow-lg shadow-primary/10 group">
-                            <Search01Icon size={20} className="mr-2 group-hover:rotate-12 transition-transform" />
+                        <Button className="h-12 px-8 rounded-full bg-primary hover:bg-primary/90 text-white font-medium transition-all shadow-lg shadow-primary/10">
+                            <Search01Icon size={20} className="mr-2" />
                             Browse Courses
                         </Button>
                     </Link>
                 </div>
-            </div>
-
-            <div className="mt-8 flex items-center gap-6 text-slate-300">
-                <div className="h-px w-12 bg-slate-100" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Verified Access Point</span>
-                <div className="h-px w-12 bg-slate-100" />
-            </div>
+            ) : (
+                /* Grid of Passes */
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 px-2">
+                    {entryPasses.map((pass) => (
+                        <EntryPassCard key={pass.id} pass={pass} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
