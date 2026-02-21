@@ -25,7 +25,7 @@ export function CertificateViewer({ certificate, open, onOpenChange }: Certifica
             const url = window.URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = url;
-            link.download = `${certificate.courseTitle}_Certificate.jpg`;
+            link.download = `${certificate.courseTitle}_Certificate.pdf`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -36,14 +36,14 @@ export function CertificateViewer({ certificate, open, onOpenChange }: Certifica
             const link = document.createElement('a');
             link.href = certificate.imageUrl;
             link.target = "_blank";
-            link.download = `${certificate.courseTitle}_Certificate.jpg`;
+            link.download = `${certificate.courseTitle}_Certificate.pdf`;
             link.click();
         }
     };
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="max-w-4xl bg-transparent border-none shadow-none p-0 gap-0">
+            <DialogContent className="max-w-4xl bg-transparent border-none shadow-none p-0 gap-0 [&>button]:hidden">
                 <DialogHeader className="hidden">
                     <DialogTitle>{certificate.courseTitle}</DialogTitle>
                     <DialogDescription>Full view of your certificate</DialogDescription>
@@ -89,12 +89,12 @@ export function CertificateViewer({ certificate, open, onOpenChange }: Certifica
                     {/* Meta Info Below Image */}
                     <div className="mt-8 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 text-white flex items-center gap-6 shadow-2xl">
                         <div className="flex flex-col text-left">
-                            <span className="text-[10px] uppercase tracking-widest font-bold opacity-60">Credential ID</span>
+                            <span className="text-[10px] uppercase opacity-60">Credential ID</span>
                             <span className="text-sm font-medium">{certificate.credentialId}</span>
                         </div>
                         <div className="h-8 w-px bg-white/20" />
                         <div className="flex flex-col text-left">
-                            <span className="text-[10px] uppercase tracking-widest font-bold opacity-60">Issued Date</span>
+                            <span className="text-[10px] uppercase opacity-60">Issued Date</span>
                             <span className="text-sm font-medium">{certificate.issueDate}</span>
                         </div>
                     </div>

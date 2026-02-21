@@ -1,4 +1,4 @@
-import { Calendar01Icon, ArrowRight01Icon } from "hugeicons-react";
+import { Calendar03Icon, ArrowRight01Icon } from "hugeicons-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { upcomingClasses } from "@/data/dashboard";
@@ -17,7 +17,7 @@ export function UpcomingClasses() {
                         <div className="group flex items-center justify-between py-4 hover:bg-slate-50/50 px-2 rounded-xl transition-colors cursor-pointer text-left">
                             <div className="flex items-center gap-4">
                                 <div className="h-10 w-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400">
-                                    <Calendar01Icon size={18} />
+                                    <Calendar03Icon size={18} />
                                 </div>
                                 <div>
                                     <h4 className="font-medium text-slate-700 text-sm leading-tight">{item.title}</h4>

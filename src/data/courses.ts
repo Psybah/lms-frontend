@@ -13,6 +13,7 @@ export const courses: Course[] = [
         seats: { enrolled: 18, total: 25 },
         category: "Software Development",
         fees: { type: 'flat', amount: 150000 },
+        progress: 68,
         modules: [
             {
                 id: "1-1",
@@ -33,6 +34,7 @@ export const courses: Course[] = [
         seats: { enrolled: 12, total: 20 },
         category: "Software Development",
         fees: { type: 'flat', amount: 200000 },
+        progress: 0,
         modules: [
             {
                 id: "2-1",
@@ -52,6 +54,7 @@ export const courses: Course[] = [
         seats: { enrolled: 15, total: 20 },
         category: "Software Development",
         fees: { type: 'flat', amount: 150000 },
+        progress: 12,
         modules: [
             { id: "3-1", title: "Python Basics", items: [{ id: "3-1-1", title: "Syntax Video", type: 'video', url: SAMPLE_VIDEO }] }
         ]

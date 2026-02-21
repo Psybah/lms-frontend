@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
 import { Course } from "@/data/types";
 import { PlayIcon } from "hugeicons-react";
 
@@ -17,6 +18,7 @@ export function CourseCard({ course }: CourseCardProps) {
     };
 
     const isLocked = !course.isUnlocked;
+    const progress = course.progress || 0;
 
     return (
         <div className="group bg-white rounded-3xl p-3 border border-slate-100 transition-all duration-300 flex flex-col h-full relative">
@@ -35,20 +37,24 @@ export function CourseCard({ course }: CourseCardProps) {
                     {course.title}
                 </h3>
 
-                <p className="text-slate-500 text-xs font-normal leading-relaxed mb-2 line-clamp-2 min-h-[2.5rem]">
+                <p className="text-slate-500 text-xs font-normal leading-relaxed mb-4 line-clamp-2 min-h-[2.5rem]">
                     {course.description}
                 </p>
 
-                <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-baseline gap-1.5">
-                        {isLocked ? (
+                <div className="mb-4">
+                    {isLocked ? (
+                        <div className="flex items-baseline gap-1.5">
                             <span className="text-xl font-medium text-primary">{getPrice()}</span>
-                        ) : (
-                            <div className="px-2.5 py-1 rounded-lg bg-green-50 text-green-600 text-[10px] font-bold uppercase tracking-wider border border-green-100/50">
-                                Paid
+                        </div>
+                    ) : (
+                        <div className="space-y-2">
+                            <div className="flex items-center justify-between text-[10px] font-medium">
+                                <span className="text-slate-400">Course Progress</span>
+                                <span className="text-primary">{progress}%</span>
                             </div>
-                        )}
-                    </div>
+                            <Progress value={progress} className="h-1 bg-slate-100" />
+                        </div>
+                    )}
                 </div>
 
                 {/* Meta Stats Line */}

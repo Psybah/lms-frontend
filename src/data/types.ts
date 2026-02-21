@@ -34,6 +34,7 @@ export interface Course {
     category: string;
     modules: CourseModule[];
     isUnlocked?: boolean;
+    progress?: number;
 }
 
 export interface CourseMetadata {

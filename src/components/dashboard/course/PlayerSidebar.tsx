@@ -84,7 +84,7 @@ export function PlayerSidebar({ course, currentModuleId, currentItemId, onItemCl
                                 )}>
                                     <div className="flex items-center gap-3 text-left">
                                         <div className={cn(
-                                            "h-6 w-6 rounded-lg bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-400 shrink-0",
+                                            "h-6 w-6 rounded-lg bg-slate-100 flex items-center justify-center text-[10px] font-medium text-slate-400 shrink-0",
                                             isCollapsed && "h-7 w-7 bg-transparent text-slate-500"
                                         )}>
                                             {course.modules.indexOf(module) + 1}
