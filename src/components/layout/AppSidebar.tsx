@@ -33,7 +33,7 @@ const items = [
         icon: QrCode01Icon,
     },
     {
-        title: "Awards",
+        title: "Certificates",
         url: "/dashboard/certificates",
         icon: Certificate01Icon,
     },
@@ -57,14 +57,14 @@ export function AppSidebar() {
                                 onClick={() => navigate(item.url)}
                                 className="flex flex-col items-center justify-center gap-2 h-auto py-3 px-0 transition-all duration-300 bg-transparent hover:bg-transparent data-[active=true]:bg-transparent group"
                             >
-                                <div className="flex flex-col items-center gap-2">
-                                    <div className="h-12 w-12 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:bg-slate-200 group-data-[active=true]:bg-primary group-data-[active=true]:shadow-md">
+                                <div className="flex flex-col items-center gap-1">
+                                    <div className="h-12 w-12 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:bg-slate-200 group-data-[active=true]:bg-primary">
                                         <item.icon
                                             size={24}
                                             className="transition-transform duration-300 group-data-[active=true]:text-white text-slate-500"
                                         />
                                     </div>
-                                    <span className="text-[9px] font-medium uppercase tracking-widest leading-none group-data-[active=true]:text-primary text-slate-500">
+                                    <span className="text-[10px] font-normal leading-none group-data-[active=true]:text-primary text-slate-500">
                                         {item.title}
                                     </span>
                                 </div>
@@ -76,7 +76,7 @@ export function AppSidebar() {
             <SidebarFooter className="pb-10 flex items-center justify-center">
                 <button className="flex flex-col items-center justify-center gap-2 text-slate-400 hover:text-destructive transition-all duration-300">
                     <Logout01Icon size={24} />
-                    <span className="text-[9px] font-medium uppercase tracking-widest leading-none">
+                    <span className="text-[10px] font-normal leading-none">
                         Logout
                     </span>
                 </button>

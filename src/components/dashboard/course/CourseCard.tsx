@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Course } from "@/data/courses";
+import { Course } from "@/data/types";
+import { PlayIcon } from "hugeicons-react";
 
 interface CourseCardProps {
     course: Course;
@@ -15,10 +16,10 @@ export function CourseCard({ course }: CourseCardProps) {
         return `₦${cohortTier?.amount.toLocaleString()}`;
     };
 
-    const isTiered = course.fees.type === 'tiered';
+    const isLocked = !course.isUnlocked;
 
     return (
-        <div className="group bg-white rounded-3xl p-3 border border-slate-100 transition-all duration-300 flex flex-col h-full">
+        <div className="group bg-white rounded-3xl p-3 border border-slate-100 transition-all duration-300 flex flex-col h-full relative">
             {/* Image Container - Compact height */}
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-50">
                 <img
@@ -40,7 +41,13 @@ export function CourseCard({ course }: CourseCardProps) {
 
                 <div className="flex items-center justify-between mb-2">
                     <div className="flex items-baseline gap-1.5">
-                        <span className="text-xl font-medium text-primary">{getPrice()}</span>
+                        {isLocked ? (
+                            <span className="text-xl font-medium text-primary">{getPrice()}</span>
+                        ) : (
+                            <div className="px-2.5 py-1 rounded-lg bg-green-50 text-green-600 text-[10px] font-bold uppercase tracking-wider border border-green-100/50">
+                                Paid
+                            </div>
+                        )}
                     </div>
                 </div>
 
@@ -55,11 +62,15 @@ export function CourseCard({ course }: CourseCardProps) {
                     <span>{course.seats.enrolled}/{course.seats.total} Seats</span>
                 </div>
 
-                <Link to={`/dashboard/learning/${course.id}`} className="block mt-auto">
+                <Link
+                    to={isLocked ? `/dashboard/learning/${course.id}` : `/dashboard/player/${course.id}/${course.modules[0]?.id}/${course.modules[0]?.items[0]?.id}`}
+                    className="block mt-auto"
+                >
                     <Button
                         className="w-full h-11 rounded-full bg-primary hover:bg-primary/90 text-white font-medium text-sm tracking-wide transition-all duration-300 shadow-sm"
                     >
-                        View Details
+                        {isLocked ? "View Details" : "Continue Learning"}
+                        {!isLocked && <PlayIcon size={16} className="ml-2" />}
                     </Button>
                 </Link>
             </div>

@@ -1,14 +1,30 @@
 import { useState } from "react";
 import { Search01Icon } from "hugeicons-react";
 import { courses } from "@/data/courses";
-import { CourseCard } from "@/components/shared/CourseCard";
+import { CourseCard } from "@/components/dashboard/course/CourseCard";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 export default function MyLearning() {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("All Courses");
+    const [activeTab, setActiveTab] = useState<'catalog' | 'my-courses'>('catalog');
 
-    const filteredCourses = courses.filter((course) => {
+    // Mock purchased courses (e.g., first course)
+    // In a real app, this would come from a user state or API
+    const purchasedCourseIds = ["1", "3"];
+
+    const allCoursesWithLockState = courses.map(course => ({
+        ...course,
+        isUnlocked: purchasedCourseIds.includes(course.id)
+    }));
+
+    const myCourses = allCoursesWithLockState.filter(c => c.isUnlocked);
+    const hasPurchasedCourses = myCourses.length > 0;
+
+    const currentCourses = activeTab === 'my-courses' ? myCourses : allCoursesWithLockState;
+
+    const filteredCourses = currentCourses.filter((course) => {
         const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             course.description.toLowerCase().includes(searchQuery.toLowerCase());
         const matchesCategory = selectedCategory === "All Courses" || course.category === selectedCategory;
@@ -19,25 +35,65 @@ export default function MyLearning() {
 
     return (
         <div className="flex flex-col gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            {/* Header Section */}
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between px-2">
-                <div className="space-y-1">
-                    <h1 className="text-3xl font-medium tracking-tight text-slate-900">Explore Courses</h1>
-                    <p className="text-slate-500 font-medium text-sm">Choose from our curated selection of premium educational paths.</p>
-                </div>
+            {/* Tab Section & Header */}
+            <div className="space-y-6 px-2">
+                <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                    <div className="space-y-1">
+                        <h1 className="text-3xl font-medium tracking-tight text-slate-900">
+                            {activeTab === 'my-courses' ? "My Learning" : "Explore Courses"}
+                        </h1>
+                        <p className="text-slate-500 font-medium text-sm">
+                            {activeTab === 'my-courses'
+                                ? "Continue your educational journey where you left off."
+                                : "Choose from our curated selection of premium educational paths."}
+                        </p>
+                    </div>
 
-                <div className="flex items-center gap-3 lg:w-96">
-                    <div className="relative group w-full">
-                        <Search01Icon size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors" />
-                        <input
-                            type="text"
-                            placeholder="Search by course name or keyword..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="h-11 w-full pl-11 pr-4 rounded-xl bg-slate-100 border-none text-sm focus:ring-2 focus:ring-primary/10 transition-all outline-none placeholder:text-slate-400"
-                        />
+                    <div className="flex items-center gap-3 lg:w-96">
+                        <div className="relative group w-full">
+                            <Search01Icon size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors" />
+                            <input
+                                type="text"
+                                placeholder="Search by course name..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="h-11 w-full pl-11 pr-4 rounded-xl bg-slate-100 border-none text-sm focus:ring-2 focus:ring-primary/10 transition-all outline-none placeholder:text-slate-400"
+                            />
+                        </div>
                     </div>
                 </div>
+
+                {hasPurchasedCourses && (
+                    <div className="flex items-center gap-8 border-b border-slate-100">
+                        <button
+                            onClick={() => setActiveTab('catalog')}
+                            className={cn(
+                                "pb-4 text-sm font-medium transition-all relative",
+                                activeTab === 'catalog' ? "text-primary" : "text-slate-400 hover:text-slate-600"
+                            )}
+                        >
+                            Course Catalog
+                            {activeTab === 'catalog' && (
+                                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                            )}
+                        </button>
+                        <button
+                            onClick={() => setActiveTab('my-courses')}
+                            className={cn(
+                                "pb-4 text-sm font-medium transition-all relative",
+                                activeTab === 'my-courses' ? "text-primary" : "text-slate-400 hover:text-slate-600"
+                            )}
+                        >
+                            My Courses
+                            <Badge variant="secondary" className="ml-2 bg-accent/50 text-primary border-none text-[10px] px-1.5 h-4">
+                                {myCourses.length}
+                            </Badge>
+                            {activeTab === 'my-courses' && (
+                                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                            )}
+                        </button>
+                    </div>
+                )}
             </div>
 
             {/* Filter Chips */}

@@ -1,42 +1,13 @@
-export interface FeeStructure {
-    type: 'flat' | 'tiered';
-    amount?: number;
-    tiers?: {
-        name: string;
-        amount: number;
-    }[];
-}
+import { Course, CourseMetadata, CourseModule, ModuleItem } from "./types";
 
-export interface ModuleItem {
-    title: string;
-    type: 'video' | 'pdf' | 'document' | 'quiz';
-}
-
-export interface CourseModule {
-    title: string;
-    items: ModuleItem[];
-}
-
-export interface Course {
-    id: string;
-    title: string;
-    description: string;
-    duration: string;
-    location: string;
-    seats: {
-        enrolled: number;
-        total: number;
-    };
-    fees: FeeStructure;
-    category: string;
-    modules: CourseModule[];
-}
+const SAMPLE_VIDEO = "https://www.w3schools.com/html/mov_bbb.mp4";
+const SAMPLE_PDF = "https://morth.nic.in/sites/default/files/dd12-13_0.pdf";
 
 export const courses: Course[] = [
     {
         id: "1",
         title: "Tech Odyssey",
-        description: "Master web development, python, and graphics in this comprehensive digital journey designed for modern creators.",
+        description: "Master web development, python, and graphics in this comprehensive digital journey.",
         duration: "3 months",
         location: "Training Lab 1, ITeMS Building, UI",
         seats: { enrolled: 18, total: 25 },
@@ -44,24 +15,11 @@ export const courses: Course[] = [
         fees: { type: 'flat', amount: 150000 },
         modules: [
             {
-                title: "Introduction to Web",
+                id: "1-1",
+                title: "Web Foundation (HTML/CSS/JS)",
                 items: [
-                    { title: "Internet Overview Video", type: 'video' },
-                    { title: "Browser Fundamentals PDF", type: 'pdf' }
-                ]
-            },
-            {
-                title: "HTML/CSS Foundations",
-                items: [
-                    { title: "Semantic HTML Guide", type: 'document' },
-                    { title: "CSS Box Model Video", type: 'video' }
-                ]
-            },
-            {
-                title: "JavaScript Essentials",
-                items: [
-                    { title: "Variables & Data Types Quiz", type: 'quiz' },
-                    { title: "Function Basics Video", type: 'video' }
+                    { id: "1-1-1", title: "Project Overview Video", type: 'video', url: SAMPLE_VIDEO },
+                    { id: "1-1-2", title: "Tech Roadmap PDF", type: 'pdf', url: SAMPLE_PDF }
                 ]
             }
         ]
@@ -69,7 +27,7 @@ export const courses: Course[] = [
     {
         id: "2",
         title: "Web Development",
-        description: "Build modern, responsive websites from scratch using HTML, CSS, and interactive JavaScript projects.",
+        description: "HTML, CSS, Java script, and real-world projects.",
         duration: "3 months",
         location: "Training Lab 1, ITeMS Building, UI",
         seats: { enrolled: 12, total: 20 },
@@ -77,17 +35,10 @@ export const courses: Course[] = [
         fees: { type: 'flat', amount: 200000 },
         modules: [
             {
-                title: "Advanced HTML5",
+                id: "2-1",
+                title: "Frontend Mastery",
                 items: [
-                    { title: "HTML5 API Overview Video", type: 'video' },
-                    { title: "Storage & Audio PDF", type: 'pdf' }
-                ]
-            },
-            {
-                title: "Modern CSS & Flexbox",
-                items: [
-                    { title: "Flexbox Masterclass Video", type: 'video' },
-                    { title: "Grid System Document", type: 'document' }
+                    { id: "2-1-1", title: "Flexbox & Grid Video", type: 'video', url: SAMPLE_VIDEO }
                 ]
             }
         ]
@@ -95,33 +46,20 @@ export const courses: Course[] = [
     {
         id: "3",
         title: "Python Programming",
-        description: "Go from basics to building real-world applications with the world's most versatile and popular programming language.",
+        description: "Language basics to real-world applications.",
         duration: "3 months",
         location: "Training Lab 1, ITeMS Building, UI",
         seats: { enrolled: 15, total: 20 },
         category: "Software Development",
         fees: { type: 'flat', amount: 150000 },
         modules: [
-            {
-                title: "Python Syntax",
-                items: [
-                    { title: "Syntax Cheatsheet PDF", type: 'pdf' },
-                    { title: "Intro to Python Video", type: 'video' }
-                ]
-            },
-            {
-                title: "Data Structures",
-                items: [
-                    { title: "Lists & Tuples Video", type: 'video' },
-                    { title: "Dictionary Exercises PDF", type: 'pdf' }
-                ]
-            }
+            { id: "3-1", title: "Python Basics", items: [{ id: "3-1-1", title: "Syntax Video", type: 'video', url: SAMPLE_VIDEO }] }
         ]
     },
     {
         id: "4",
         title: "Digital Literacy",
-        description: "Unlock essential digital skills, from online security to advanced collaborative productivity tools for the modern workplace.",
+        description: "Basic Computer Operations, Online Security, Productivity Tools.",
         duration: "1 month",
         location: "Training Lab 1, ITeMS Building, UI",
         seats: { enrolled: 22, total: 30 },
@@ -134,48 +72,29 @@ export const courses: Course[] = [
             ]
         },
         modules: [
-            {
-                title: "Basic Computing",
-                items: [
-                    { title: "Hardware Basics Video", type: 'video' },
-                    { title: "OS Navigation Guide", type: 'document' }
-                ]
-            },
-            {
-                title: "Internet Safety",
-                items: [
-                    { title: "Cyber Security PDF", type: 'pdf' },
-                    { title: "Phishing Awareness Video", type: 'video' }
-                ]
-            }
+            { id: "4-1", title: "Digital Foundations", items: [{ id: "4-1-1", title: "OS Basics Video", type: 'video', url: SAMPLE_VIDEO }] }
         ]
     },
     {
         id: "5",
         title: "ArcGIS & Spatial Analysis",
-        description: "Learn to visualize and analyze geographic data using industry-leading GIS software for spatial decision making.",
+        description: "Mapping and spatial data analysis.",
         duration: "1 month",
-        location: "Training Lab 1, ITeMS Building, UI",
-        seats: { enrolled: 8, total: 15 },
+        location: "ITeMS Building, UI",
+        seats: { enrolled: 5, total: 10 },
         category: "Data Science",
         fees: { type: 'flat', amount: 50000 },
         modules: [
-            {
-                title: "GIS Introduction",
-                items: [
-                    { title: "Intro to Spatial Data Video", type: 'video' },
-                    { title: "GIS Software Guide PDF", type: 'pdf' }
-                ]
-            }
+            { id: "5-1", title: "ArcGIS Intro", items: [{ id: "5-1-1", title: "Mapping Video", type: 'video', url: SAMPLE_VIDEO }] }
         ]
     },
     {
         id: "6",
-        title: "Data Analysis / Analytics",
-        description: "Transform complex raw data into actionable business insights using professional tools like Excel, Power BI, and SPSS.",
+        title: "Data Analysis / Data Analytics",
+        description: "SPSS, Excel, Power BI for data insights.",
         duration: "5 weeks",
-        location: "Training Lab 1, ITeMS Building, UI",
-        seats: { enrolled: 14, total: 20 },
+        location: "ITeMS Building, UI",
+        seats: { enrolled: 10, total: 15 },
         category: "Data Science",
         fees: {
             type: 'tiered',
@@ -185,41 +104,29 @@ export const courses: Course[] = [
             ]
         },
         modules: [
-            {
-                title: "Data Cleaning",
-                items: [
-                    { title: "Excel Cleaning Hacks Video", type: 'video' },
-                    { title: "PowerQuery Principles PDF", type: 'pdf' }
-                ]
-            }
+            { id: "6-1", title: "Data Tools", items: [{ id: "6-1-1", title: "Power BI Basics", type: 'video', url: SAMPLE_VIDEO }] }
         ]
     },
     {
         id: "7",
-        title: "Data Processing",
-        description: "Step into the world of database management and information organization for high-efficiency professional environments.",
+        title: "DATA PROCESSING",
+        description: "Excel, Word, PowerPoint, SPSS mastery.",
         duration: "8 weeks",
-        location: "Training Lab 1, ITeMS Building, UI",
-        seats: { enrolled: 10, total: 25 },
-        category: "Data Science",
+        location: "ITeMS Building, UI",
+        seats: { enrolled: 8, total: 15 },
+        category: "Digital Literacy",
         fees: { type: 'flat', amount: 100000 },
         modules: [
-            {
-                title: "Database Management Systems",
-                items: [
-                    { title: "SQL Basics Video", type: 'video' },
-                    { title: "DB Schema Design PDF", type: 'pdf' }
-                ]
-            }
+            { id: "7-1", title: "Word & Excel", items: [{ id: "7-1-1", title: "Excel Formulas", type: 'video', url: SAMPLE_VIDEO }] }
         ]
     },
     {
         id: "8",
         title: "Digital Productivity Tools",
-        description: "Boost your professional output by mastering modern online collaboration and essential business office applications.",
+        description: "Online collaboration and office suite mastery.",
         duration: "1 month",
-        location: "Training Lab 1, ITeMS Building, UI",
-        seats: { enrolled: 16, total: 20 },
+        location: "ITeMS Building, UI",
+        seats: { enrolled: 12, total: 20 },
         category: "Digital Literacy",
         fees: {
             type: 'tiered',
@@ -229,60 +136,42 @@ export const courses: Course[] = [
             ]
         },
         modules: [
-            {
-                title: "Efficient Document Crafting",
-                items: [
-                    { title: "MS Word Advanced Video", type: 'video' },
-                    { title: "Templates Library PDF", type: 'pdf' }
-                ]
-            }
+            { id: "8-1", title: "Collaboration", items: [{ id: "8-1-1", title: "Teams & Zoom Video", type: 'video', url: SAMPLE_VIDEO }] }
         ]
     },
     {
         id: "9",
         title: "Generative AI",
-        description: "Explore the cutting edge of technology and master the latest AI-driven tools to enhance your creative and technical workflows.",
+        description: "Leveraging AI for creative and professional tasks.",
         duration: "1 month",
-        location: "Training Lab 1, ITeMS Building, UI",
-        seats: { enrolled: 19, total: 25 },
+        location: "ITeMS Building, UI",
+        seats: { enrolled: 15, total: 25 },
         category: "AI & ML",
         fees: { type: 'flat', amount: 100000 },
         modules: [
-            {
-                title: "Prompt Engineering",
-                items: [
-                    { title: "Mastering Prompts Video", type: 'video' },
-                    { title: "AI Prompt Bible PDF", type: 'pdf' }
-                ]
-            }
+            { id: "9-1", title: "AI Basics", items: [{ id: "9-1-1", title: "Prompt Engineering", type: 'video', url: SAMPLE_VIDEO }] }
         ]
     },
     {
         id: "10",
         title: "Routing & Wireless Networking",
-        description: "Design and secure professional-grade networks using MikroTik OS environments and advanced hardware configurations.",
+        description: "MikroTik OS and wireless network management.",
         duration: "2 weeks",
-        location: "Training Lab 1, ITeMS Building, UI",
-        seats: { enrolled: 5, total: 12 },
+        location: "ITeMS Building, UI",
+        seats: { enrolled: 6, total: 12 },
         category: "Networking",
         fees: { type: 'flat', amount: 100000 },
         modules: [
-            {
-                title: "Network Fundamentals",
-                items: [
-                    { title: "IP Networking Video", type: 'video' },
-                    { title: "Network Layout PDF", type: 'pdf' }
-                ]
-            }
+            { id: "10-1", title: "MikroTik Setup", items: [{ id: "10-1-1", title: "Routing Intro", type: 'video', url: SAMPLE_VIDEO }] }
         ]
     },
     {
         id: "11",
         title: "Basic Computer Networking",
-        description: "Establish the foundation of modern connectivity by learning how computers communicate in local and global networks.",
+        description: "Foundational networking concepts.",
         duration: "4 weeks",
-        location: "Training Lab 1, ITeMS Building, UI",
-        seats: { enrolled: 11, total: 20 },
+        location: "ITeMS Building, UI",
+        seats: { enrolled: 10, total: 20 },
         category: "Networking",
         fees: {
             type: 'tiered',
@@ -292,81 +181,49 @@ export const courses: Course[] = [
             ]
         },
         modules: [
-            {
-                title: "OSI Model",
-                items: [
-                    { title: "OSI Layers Video", type: 'video' },
-                    { title: "Protocol Suite PDF", type: 'pdf' }
-                ]
-            }
+            { id: "11-1", title: "Networking Basics", items: [{ id: "11-1-1", title: "IP Addressing", type: 'video', url: SAMPLE_VIDEO }] }
         ]
     },
     {
         id: "13",
         title: "Data Science",
-        description: "Dive deep into statistical modeling, machine learning, and predictive analysis to solve complex real-world problems.",
+        description: "Analytics, modeling, and data-driven insights.",
         duration: "4 months",
-        location: "Training Lab 1, ITeMS Building, UI",
-        seats: { enrolled: 14, total: 20 },
+        location: "ITeMS Building, UI",
+        seats: { enrolled: 12, total: 25 },
         category: "Data Science",
         fees: { type: 'flat', amount: 300000 },
         modules: [
-            {
-                title: "Statistical Inference",
-                items: [
-                    { title: "Stats Basics Video", type: 'video' },
-                    { title: "R Programming Guide PDF", type: 'pdf' }
-                ]
-            }
+            { id: "13-1", title: "Data Analysis", items: [{ id: "13-1-1", title: "Pandas Intro", type: 'video', url: SAMPLE_VIDEO }] }
         ]
     },
     {
         id: "14",
         title: "Cybersecurity",
-        description: "Master the art of digital defense by learning network security, ethical hacking, and modern infrastructure protection.",
+        description: "Network security and ethical hacking.",
         duration: "4 months",
-        location: "Training Lab 1, ITeMS Building, UI",
-        seats: { enrolled: 12, total: 20 },
+        location: "ITeMS Building, UI",
+        seats: { enrolled: 8, total: 20 },
         category: "Cybersecurity",
         fees: { type: 'flat', amount: 300000 },
         modules: [
-            {
-                title: "Information Security Oversight",
-                items: [
-                    { title: "Ethics in Hacking Video", type: 'video' },
-                    { title: "Security Protocols PDF", type: 'pdf' }
-                ]
-            }
+            { id: "14-1", title: "Security Labs", items: [{ id: "14-1-1", title: "Auth Systems", type: 'video', url: SAMPLE_VIDEO }] }
         ]
     },
     {
         id: "15",
         title: "Digital Marketing",
-        description: "Learn to grow brands at scale online using expert-level SEO, SEM, and modern social media growth strategies.",
+        description: "Social media, SEO, and digital growth strategies.",
         duration: "4 months",
-        location: "Training Lab 1, ITeMS Building, UI",
-        seats: { enrolled: 10, total: 20 },
-        category: "Digital Marketing",
+        location: "ITeMS Building, UI",
+        seats: { enrolled: 20, total: 30 },
+        category: "Digital Literacy",
         fees: { type: 'flat', amount: 300000 },
         modules: [
-            {
-                title: "SEO Strategy",
-                items: [
-                    { title: "SEO Foundation Video", type: 'video' },
-                    { title: "Keyword Research PDF", type: 'pdf' }
-                ]
-            }
+            { id: "15-1", title: "SEO Strategy", items: [{ id: "15-1-1", title: "Search Engines", type: 'video', url: SAMPLE_VIDEO }] }
         ]
     }
 ];
-
-export interface CourseMetadata {
-    applicationFee: number;
-    enrollmentRule: string;
-    specialPackageRule: string;
-    facilities: string[];
-    contacts: string[];
-}
 
 export const courseMetadata: CourseMetadata = {
     applicationFee: 20000,
@@ -383,3 +240,6 @@ export const courseMetadata: CourseMetadata = {
         "0806-273-3470"
     ]
 };
+
+// Re-export types for compatibility
+export type { Course, CourseMetadata, CourseModule, ModuleItem };
