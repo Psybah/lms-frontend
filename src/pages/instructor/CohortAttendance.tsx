@@ -21,6 +21,11 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Separator } from "@/components/ui/separator";
 import {
     UserGroupIcon,
@@ -169,37 +174,52 @@ export default function CohortAttendance() {
                                                         <div className="flex items-center justify-end gap-1">
                                                             {/* Manual status override buttons */}
                                                             {student.status !== "present" && (
-                                                                <Button
-                                                                    variant="ghost"
-                                                                    size="icon"
-                                                                    className="h-8 w-8 rounded-full text-emerald-400 hover:text-emerald-600 hover:bg-emerald-50"
-                                                                    onClick={() => handleMarkAttendance(student, "present")}
-                                                                    aria-label={`Mark ${student.studentName} present`}
-                                                                >
-                                                                    <CheckmarkCircle01Icon size={14} />
-                                                                </Button>
+                                                                <Tooltip>
+                                                                    <TooltipTrigger asChild>
+                                                                        <Button
+                                                                            variant="ghost"
+                                                                            size="icon"
+                                                                            className="h-8 w-8 rounded-full text-emerald-400 hover:text-emerald-600 hover:bg-emerald-50"
+                                                                            onClick={() => handleMarkAttendance(student, "present")}
+                                                                            aria-label={`Mark ${student.studentName} present`}
+                                                                        >
+                                                                            <CheckmarkCircle01Icon size={14} />
+                                                                        </Button>
+                                                                    </TooltipTrigger>
+                                                                    <TooltipContent side="top" className="text-xs">Mark present</TooltipContent>
+                                                                </Tooltip>
                                                             )}
                                                             {student.status !== "absent" && (
-                                                                <Button
-                                                                    variant="ghost"
-                                                                    size="icon"
-                                                                    className="h-8 w-8 rounded-full text-red-300 hover:text-red-500 hover:bg-red-50"
-                                                                    onClick={() => handleMarkAttendance(student, "absent")}
-                                                                    aria-label={`Mark ${student.studentName} absent`}
-                                                                >
-                                                                    <Cancel01Icon size={14} />
-                                                                </Button>
+                                                                <Tooltip>
+                                                                    <TooltipTrigger asChild>
+                                                                        <Button
+                                                                            variant="ghost"
+                                                                            size="icon"
+                                                                            className="h-8 w-8 rounded-full text-red-300 hover:text-red-500 hover:bg-red-50"
+                                                                            onClick={() => handleMarkAttendance(student, "absent")}
+                                                                            aria-label={`Mark ${student.studentName} absent`}
+                                                                        >
+                                                                            <Cancel01Icon size={14} />
+                                                                        </Button>
+                                                                    </TooltipTrigger>
+                                                                    <TooltipContent side="top" className="text-xs">Mark absent</TooltipContent>
+                                                                </Tooltip>
                                                             )}
                                                             {/* Grade button */}
-                                                            <Button
-                                                                variant="ghost"
-                                                                size="icon"
-                                                                className="h-8 w-8 rounded-full text-slate-300 hover:text-primary hover:bg-primary/5"
-                                                                onClick={() => setGradeDialogStudent(student)}
-                                                                aria-label={`Grade ${student.studentName}`}
-                                                            >
-                                                                <StarIcon size={14} />
-                                                            </Button>
+                                                            <Tooltip>
+                                                                <TooltipTrigger asChild>
+                                                                    <Button
+                                                                        variant="ghost"
+                                                                        size="icon"
+                                                                        className="h-8 w-8 rounded-full text-slate-300 hover:text-primary hover:bg-primary/5"
+                                                                        onClick={() => setGradeDialogStudent(student)}
+                                                                        aria-label={`Grade ${student.studentName}`}
+                                                                    >
+                                                                        <StarIcon size={14} />
+                                                                    </Button>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent side="top" className="text-xs">Subjective grade</TooltipContent>
+                                                            </Tooltip>
                                                         </div>
                                                     </TableCell>
                                                 </TableRow>

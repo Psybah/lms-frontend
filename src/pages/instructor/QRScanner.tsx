@@ -3,6 +3,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
     QrCode01Icon,
     Camera01Icon,
     CheckmarkCircle01Icon,
@@ -26,6 +36,7 @@ export default function QRScanner() {
     const [manualCode, setManualCode] = useState("");
     const [lastResult, setLastResult] = useState<ScanResult | null>(null);
     const [scanHistory, setScanHistory] = useState<ScanResult[]>([]);
+    const [clearHistoryOpen, setClearHistoryOpen] = useState(false);
 
     const processCode = useCallback((code: string) => {
         const trimmed = code.trim().toUpperCase();
@@ -194,7 +205,7 @@ export default function QRScanner() {
                                 <Button
                                     variant="ghost"
                                     size="sm"
-                                    onClick={() => setScanHistory([])}
+                                    onClick={() => setClearHistoryOpen(true)}
                                     className="h-8 text-xs text-slate-400 hover:text-slate-600 gap-1 rounded-full"
                                 >
                                     <ArrowReloadHorizontalIcon size={12} />
@@ -246,6 +257,29 @@ export default function QRScanner() {
                     </div>
                 </div>
             </div>
+
+            {/* Clear History Confirmation */}
+            <AlertDialog open={clearHistoryOpen} onOpenChange={setClearHistoryOpen}>
+                <AlertDialogContent className="rounded-2xl border-slate-100 shadow-xl max-w-sm">
+                    <AlertDialogHeader>
+                        <AlertDialogTitle className="text-lg font-medium text-slate-900">Clear Scan History?</AlertDialogTitle>
+                        <AlertDialogDescription className="text-slate-500 text-sm">
+                            This will remove all {scanHistory.length} scan results from the current session. This action cannot be undone.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter className="gap-2 sm:gap-2">
+                        <AlertDialogCancel className="rounded-full h-10 border-slate-200 text-slate-500 font-normal">
+                            Keep History
+                        </AlertDialogCancel>
+                        <AlertDialogAction
+                            onClick={() => { setScanHistory([]); setClearHistoryOpen(false); toast.success("Scan history cleared"); }}
+                            className="rounded-full h-10 bg-destructive hover:bg-destructive/90 text-white font-normal"
+                        >
+                            Clear All
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     );
 }

@@ -14,6 +14,16 @@ import {
     DialogClose,
 } from "@/components/ui/dialog";
 import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
     Table,
     TableBody,
     TableCell,
@@ -39,6 +49,7 @@ export default function UserManagement() {
     const [roleFilter, setRoleFilter] = useState<"all" | "admin" | "instructor" | "student">("all");
     const [editUser, setEditUser] = useState<AdminUser | null>(null);
     const [selectedRole, setSelectedRole] = useState<string>("");
+    const [statusToggleTarget, setStatusToggleTarget] = useState<AdminUser | null>(null);
 
     const filteredUsers = adminUsers.filter((u) => {
         const matchesSearch =
@@ -77,11 +88,14 @@ export default function UserManagement() {
         }
     };
 
-    const handleToggleStatus = (user: AdminUser) => {
-        const newStatus = user.status === "active" ? "suspended" : "active";
-        toast.success(`${user.name} ${newStatus === "active" ? "activated" : "suspended"}`, {
-            description: `Account status changed to ${newStatus}.`,
-        });
+    const handleToggleStatus = () => {
+        if (statusToggleTarget) {
+            const newStatus = statusToggleTarget.status === "active" ? "suspended" : "active";
+            toast.success(`${statusToggleTarget.name} ${newStatus === "active" ? "activated" : "suspended"}`, {
+                description: `Account status changed to ${newStatus}.`,
+            });
+            setStatusToggleTarget(null);
+        }
     };
 
     return (
@@ -213,7 +227,7 @@ export default function UserManagement() {
                                                                     ? "text-slate-400 hover:text-destructive hover:bg-destructive/5"
                                                                     : "text-slate-400 hover:text-emerald-600 hover:bg-emerald-50"
                                                             )}
-                                                            onClick={() => handleToggleStatus(user)}
+                                                            onClick={() => setStatusToggleTarget(user)}
                                                             aria-label={user.status === "active" ? `Suspend ${user.name}` : `Activate ${user.name}`}
                                                         >
                                                             {user.status === "active" ? <Cancel01Icon size={16} /> : <CheckmarkCircle01Icon size={16} />}
@@ -282,6 +296,38 @@ export default function UserManagement() {
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
+
+            {/* Suspend/Activate Confirmation */}
+            <AlertDialog open={!!statusToggleTarget} onOpenChange={(open) => { if (!open) setStatusToggleTarget(null); }}>
+                <AlertDialogContent className="rounded-2xl border-slate-100 shadow-xl max-w-sm">
+                    <AlertDialogHeader>
+                        <AlertDialogTitle className="text-lg font-medium text-slate-900">
+                            {statusToggleTarget?.status === "active" ? "Suspend User?" : "Activate User?"}
+                        </AlertDialogTitle>
+                        <AlertDialogDescription className="text-slate-500 text-sm">
+                            {statusToggleTarget?.status === "active"
+                                ? `This will suspend ${statusToggleTarget?.name}'s account. They will lose access to the platform until reactivated.`
+                                : `This will reactivate ${statusToggleTarget?.name}'s account and restore full platform access.`}
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter className="gap-2 sm:gap-2">
+                        <AlertDialogCancel className="rounded-full h-10 border-slate-200 text-slate-500 font-normal">
+                            Cancel
+                        </AlertDialogCancel>
+                        <AlertDialogAction
+                            onClick={handleToggleStatus}
+                            className={cn(
+                                "rounded-full h-10 font-normal",
+                                statusToggleTarget?.status === "active"
+                                    ? "bg-destructive hover:bg-destructive/90 text-white"
+                                    : "bg-emerald-600 hover:bg-emerald-500 text-white"
+                            )}
+                        >
+                            {statusToggleTarget?.status === "active" ? "Suspend Account" : "Activate Account"}
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     );
 }

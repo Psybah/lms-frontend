@@ -13,6 +13,16 @@ import {
     DialogClose,
 } from "@/components/ui/dialog";
 import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
     Table,
     TableBody,
     TableCell,
@@ -38,6 +48,8 @@ export default function Assessments() {
     const [activeTab, setActiveTab] = useState<"questions" | "scoring">("questions");
     const [editQuestion, setEditQuestion] = useState<QuestionBank | null>(null);
     const [createOpen, setCreateOpen] = useState(false);
+    const [deleteTarget, setDeleteTarget] = useState<QuestionBank | null>(null);
+    const [editScoringRule, setEditScoringRule] = useState<ScoringRule | null>(null);
 
     const filteredQuestions = questionBank.filter(
         (q) =>
@@ -61,14 +73,20 @@ export default function Assessments() {
         }
     };
 
-    const handleDeleteQuestion = (q: QuestionBank) => {
-        toast.success("Question removed", { description: `"${q.question.slice(0, 40)}..." deleted from the bank.` });
+    const handleDeleteQuestion = () => {
+        if (deleteTarget) {
+            toast.success("Question removed", { description: `"${deleteTarget.question.slice(0, 40)}..." deleted from the bank.` });
+            setDeleteTarget(null);
+        }
     };
 
-    const handleUpdateScoringRule = (rule: ScoringRule) => {
-        toast.success(`Scoring updated for ${rule.courseTitle}`, {
-            description: `Passing: ${rule.passingScore}% · ${rule.totalQuestions} questions · ${rule.timeLimit}min limit`,
-        });
+    const handleUpdateScoringRule = () => {
+        if (editScoringRule) {
+            toast.success(`Scoring updated for ${editScoringRule.courseTitle}`, {
+                description: `Passing: ${editScoringRule.passingScore}% · ${editScoringRule.totalQuestions} questions · ${editScoringRule.timeLimit}min limit`,
+            });
+            setEditScoringRule(null);
+        }
     };
 
     return (
@@ -183,7 +201,7 @@ export default function Assessments() {
                                         <Button variant="ghost" size="icon" className="h-9 w-9 rounded-full text-slate-400 hover:text-primary hover:bg-primary/5" onClick={() => setEditQuestion(q)} aria-label="Edit question">
                                             <Edit01Icon size={16} />
                                         </Button>
-                                        <Button variant="ghost" size="icon" className="h-9 w-9 rounded-full text-slate-400 hover:text-destructive hover:bg-destructive/5" onClick={() => handleDeleteQuestion(q)} aria-label="Delete question">
+                                        <Button variant="ghost" size="icon" className="h-9 w-9 rounded-full text-slate-400 hover:text-destructive hover:bg-destructive/5" onClick={() => setDeleteTarget(q)} aria-label="Delete question">
                                             <Delete01Icon size={16} />
                                         </Button>
                                     </div>
@@ -222,7 +240,7 @@ export default function Assessments() {
                                                 variant="ghost"
                                                 size="icon"
                                                 className="h-9 w-9 rounded-full text-slate-400 hover:text-primary hover:bg-primary/5"
-                                                onClick={() => handleUpdateScoringRule(rule)}
+                                                onClick={() => setEditScoringRule(rule)}
                                                 aria-label={`Configure ${rule.courseTitle} scoring`}
                                             >
                                                 <Settings01Icon size={16} />
@@ -301,6 +319,87 @@ export default function Assessments() {
                         </DialogClose>
                         <Button onClick={handleSaveQuestion} className="rounded-full h-10 bg-primary hover:bg-primary/90 text-white font-normal shadow-lg shadow-primary/10">
                             {editQuestion ? "Save Changes" : "Add Question"}
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
+
+            {/* Delete Question Confirmation */}
+            <AlertDialog open={!!deleteTarget} onOpenChange={(open) => { if (!open) setDeleteTarget(null); }}>
+                <AlertDialogContent className="rounded-2xl border-slate-100 shadow-xl max-w-sm">
+                    <AlertDialogHeader>
+                        <AlertDialogTitle className="text-lg font-medium text-slate-900">Delete Question?</AlertDialogTitle>
+                        <AlertDialogDescription className="text-slate-500 text-sm">
+                            This will permanently remove this question from the assessment bank. This action cannot be undone.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter className="gap-2 sm:gap-2">
+                        <AlertDialogCancel className="rounded-full h-10 border-slate-200 text-slate-500 font-normal">
+                            Cancel
+                        </AlertDialogCancel>
+                        <AlertDialogAction
+                            onClick={handleDeleteQuestion}
+                            className="rounded-full h-10 bg-destructive hover:bg-destructive/90 text-white font-normal"
+                        >
+                            Delete Question
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
+
+            {/* Scoring Rule Edit Dialog */}
+            <Dialog open={!!editScoringRule} onOpenChange={(open) => { if (!open) setEditScoringRule(null); }}>
+                <DialogContent className="rounded-2xl border-slate-100 shadow-xl max-w-sm">
+                    <DialogHeader>
+                        <DialogTitle className="text-lg font-medium text-slate-900">Configure Scoring</DialogTitle>
+                        <DialogDescription className="text-slate-500 text-sm">
+                            Update scoring rules for <span className="font-medium text-slate-700">{editScoringRule?.courseTitle}</span>.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="py-4 space-y-4">
+                        <div className="space-y-2">
+                            <label htmlFor="sr-passing" className="text-sm font-medium text-slate-700">Passing Score (%)</label>
+                            <input
+                                id="sr-passing"
+                                type="number"
+                                min={0}
+                                max={100}
+                                defaultValue={editScoringRule?.passingScore || 70}
+                                className="h-11 w-full px-4 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:ring-2 focus:ring-primary/10 transition-all outline-none placeholder:text-slate-400"
+                            />
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <label htmlFor="sr-questions" className="text-sm font-medium text-slate-700">Total Questions</label>
+                                <input
+                                    id="sr-questions"
+                                    type="number"
+                                    min={1}
+                                    defaultValue={editScoringRule?.totalQuestions || 20}
+                                    className="h-11 w-full px-4 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:ring-2 focus:ring-primary/10 transition-all outline-none placeholder:text-slate-400"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <label htmlFor="sr-time" className="text-sm font-medium text-slate-700">Time Limit (min)</label>
+                                <input
+                                    id="sr-time"
+                                    type="number"
+                                    min={1}
+                                    defaultValue={editScoringRule?.timeLimit || 30}
+                                    className="h-11 w-full px-4 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:ring-2 focus:ring-primary/10 transition-all outline-none placeholder:text-slate-400"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <DialogFooter className="gap-2 sm:gap-2">
+                        <DialogClose asChild>
+                            <Button variant="outline" className="rounded-full h-10 border-slate-200 text-slate-500 font-normal">Cancel</Button>
+                        </DialogClose>
+                        <Button
+                            onClick={handleUpdateScoringRule}
+                            className="rounded-full h-10 bg-primary hover:bg-primary/90 text-white font-normal shadow-lg shadow-primary/10"
+                        >
+                            Save Rules
                         </Button>
                     </DialogFooter>
                 </DialogContent>

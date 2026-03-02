@@ -14,6 +14,16 @@ import {
     DialogClose,
 } from "@/components/ui/dialog";
 import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
     Table,
     TableBody,
     TableCell,
@@ -41,6 +51,7 @@ export default function CourseManager() {
     const [editCourse, setEditCourse] = useState<Course | null>(null);
     const [createOpen, setCreateOpen] = useState(false);
     const [deleteTarget, setDeleteTarget] = useState<Course | null>(null);
+    const [promoteTarget, setPromoteTarget] = useState<typeof waitlistEntries[0] | null>(null);
 
     const filteredCourses = courses.filter(
         (c) =>
@@ -48,10 +59,13 @@ export default function CourseManager() {
             c.category.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    const handlePromote = (studentName: string, courseTitle: string) => {
-        toast.success(`${studentName} promoted to ${courseTitle}`, {
-            description: "Student has been enrolled and removed from the waitlist.",
-        });
+    const handlePromote = () => {
+        if (promoteTarget) {
+            toast.success(`${promoteTarget.studentName} promoted to ${promoteTarget.courseTitle}`, {
+                description: "Student has been enrolled and removed from the waitlist.",
+            });
+            setPromoteTarget(null);
+        }
     };
 
     const handleDeleteCourse = () => {
@@ -259,7 +273,7 @@ export default function CourseManager() {
                                             <TableCell className="text-sm text-slate-400">{entry.requestDate}</TableCell>
                                             <TableCell className="text-right">
                                                 <Button
-                                                    onClick={() => handlePromote(entry.studentName, entry.courseTitle)}
+                                                    onClick={() => setPromoteTarget(entry)}
                                                     className="h-9 px-4 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-600 font-medium text-xs gap-1.5 shadow-none"
                                                 >
                                                     <ArrowUp01Icon size={14} />
@@ -354,29 +368,51 @@ export default function CourseManager() {
             </Dialog>
 
             {/* Delete Confirmation */}
-            <Dialog open={!!deleteTarget} onOpenChange={(open) => { if (!open) setDeleteTarget(null); }}>
-                <DialogContent className="rounded-2xl border-slate-100 shadow-xl max-w-sm">
-                    <DialogHeader>
-                        <DialogTitle className="text-lg font-medium text-slate-900">Delete Course?</DialogTitle>
-                        <DialogDescription className="text-slate-500 text-sm">
+            <AlertDialog open={!!deleteTarget} onOpenChange={(open) => { if (!open) setDeleteTarget(null); }}>
+                <AlertDialogContent className="rounded-2xl border-slate-100 shadow-xl max-w-sm">
+                    <AlertDialogHeader>
+                        <AlertDialogTitle className="text-lg font-medium text-slate-900">Delete Course?</AlertDialogTitle>
+                        <AlertDialogDescription className="text-slate-500 text-sm">
                             This will permanently remove "{deleteTarget?.title}" from the catalog. This action cannot be undone.
-                        </DialogDescription>
-                    </DialogHeader>
-                    <DialogFooter className="gap-2 sm:gap-2">
-                        <DialogClose asChild>
-                            <Button variant="outline" className="rounded-full h-10 border-slate-200 text-slate-500 font-normal">
-                                Cancel
-                            </Button>
-                        </DialogClose>
-                        <Button
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter className="gap-2 sm:gap-2">
+                        <AlertDialogCancel className="rounded-full h-10 border-slate-200 text-slate-500 font-normal">
+                            Cancel
+                        </AlertDialogCancel>
+                        <AlertDialogAction
                             onClick={handleDeleteCourse}
                             className="rounded-full h-10 bg-destructive hover:bg-destructive/90 text-white font-normal"
                         >
                             Delete Course
-                        </Button>
-                    </DialogFooter>
-                </DialogContent>
-            </Dialog>
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
+
+            {/* Promote Waitlist Confirmation */}
+            <AlertDialog open={!!promoteTarget} onOpenChange={(open) => { if (!open) setPromoteTarget(null); }}>
+                <AlertDialogContent className="rounded-2xl border-slate-100 shadow-xl max-w-sm">
+                    <AlertDialogHeader>
+                        <AlertDialogTitle className="text-lg font-medium text-slate-900">Promote Student?</AlertDialogTitle>
+                        <AlertDialogDescription className="text-slate-500 text-sm">
+                            <span className="font-medium text-slate-700">{promoteTarget?.studentName}</span> will be enrolled in{" "}
+                            <span className="font-medium text-slate-700">{promoteTarget?.courseTitle}</span> and removed from the waitlist.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter className="gap-2 sm:gap-2">
+                        <AlertDialogCancel className="rounded-full h-10 border-slate-200 text-slate-500 font-normal">
+                            Cancel
+                        </AlertDialogCancel>
+                        <AlertDialogAction
+                            onClick={handlePromote}
+                            className="rounded-full h-10 bg-emerald-600 hover:bg-emerald-500 text-white font-normal"
+                        >
+                            Confirm Promotion
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     );
 }

@@ -19,14 +19,14 @@ export function AuthLayout({ children }: AuthLayoutProps) {
                 <div className="absolute bottom-0 left-0 right-0 p-10 text-white">
                     <div className="mb-3">
                         <span className="text-xs font-normal uppercase tracking-widest text-white/60">
-                            Training & Research Division
+                            TRD · ITeMS, University of Ibadan
                         </span>
                     </div>
                     <h2 className="text-3xl font-medium leading-snug mb-3">
                         Learn, Certify, and Advance.
                     </h2>
                     <p className="text-sm text-white/70 font-normal leading-relaxed max-w-sm">
-                        A unified platform for physical training programs, digital gatekeeping, and professional certification.
+                        The Training, Research and Development Unit — building professional capacity for the University of Ibadan community and beyond.
                     </p>
                 </div>
             </div>

@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { DashboardLayout } from "./components/layout/DashboardLayout";
 import { AdminLayout } from "./components/layout/AdminLayout";
 import { InstructorLayout } from "./components/layout/InstructorLayout";
@@ -21,8 +21,10 @@ import SystemHealth from "@/pages/admin/SystemHealth";
 import QRScanner from "@/pages/instructor/QRScanner";
 import CohortAttendance from "@/pages/instructor/CohortAttendance";
 import Login from "@/pages/auth/Login";
+import StaffLogin from "@/pages/auth/StaffLogin";
 import Signup from "@/pages/auth/Signup";
 import ForgotPassword from "@/pages/auth/ForgotPassword";
+import LandingPage from "@/pages/LandingPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,14 +36,12 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          {/* Root → Login */}
-          <Route path="/" element={<Navigate to="/login" replace />} />
+          {/* Landing Page */}
+          <Route path="/" element={<LandingPage />} />
 
           {/* Auth Routes */}
-          <Route element={<AuthLayout>{null}</AuthLayout>}>
-            {/* Render auth pages inside AuthLayout via index routes */}
-          </Route>
           <Route path="/login" element={<AuthLayout><Login /></AuthLayout>} />
+          <Route path="/staff-login" element={<AuthLayout><StaffLogin /></AuthLayout>} />
           <Route path="/signup" element={<AuthLayout><Signup /></AuthLayout>} />
           <Route path="/forgot-password" element={<AuthLayout><ForgotPassword /></AuthLayout>} />
 
