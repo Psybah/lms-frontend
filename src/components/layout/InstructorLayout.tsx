@@ -1,7 +1,8 @@
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { InstructorSidebar } from "./InstructorSidebar";
 import { Outlet } from "react-router-dom";
-import { Notification01Icon, Wifi01Icon } from "hugeicons-react";
+import { Wifi01Icon } from "hugeicons-react";
+import { NotificationDropdown } from "./NotificationDropdown";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -21,10 +22,7 @@ export function InstructorLayout() {
                                 </Badge>
                             </div>
                             <div className="flex items-center justify-end gap-4">
-                                <Button variant="ghost" size="icon" className="rounded-full relative hover:bg-slate-50 transition-colors h-11 w-11" aria-label="Notifications">
-                                    <Notification01Icon size={22} className="text-slate-600" />
-                                    <span className="sr-only">Notifications</span>
-                                </Button>
+                                <NotificationDropdown />
                                 <div className="flex items-center gap-3 pl-2 border-l border-slate-100">
                                     <div className="flex flex-col items-end mr-1">
                                         <span className="text-sm font-medium text-slate-800">Dr. Funke Akindele</span>

@@ -77,22 +77,6 @@ export default function Login() {
                     Create account
                 </Link>
             </p>
-
-            <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-slate-100" />
-                </div>
-                <div className="relative flex justify-center text-xs">
-                    <span className="bg-white px-3 text-slate-300 font-medium">or</span>
-                </div>
-            </div>
-
-            <p className="text-center text-sm text-slate-500 font-normal">
-                Staff or instructor?{" "}
-                <Link to="/staff-login" className="font-medium text-primary hover:underline">
-                    Staff login
-                </Link>
-            </p>
         </div>
     );
 }

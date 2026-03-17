@@ -12,9 +12,8 @@ import {
 
 
 const ROLES = [
+    "Instructor",
     "Student",
-    "Staff",
-    "External Participant",
 ];
 
 export default function Signup() {

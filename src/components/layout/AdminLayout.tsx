@@ -1,7 +1,8 @@
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AdminSidebar } from "./AdminSidebar";
 import { Outlet } from "react-router-dom";
-import { Notification01Icon, Search01Icon } from "hugeicons-react";
+import { Search01Icon } from "hugeicons-react";
+import { NotificationDropdown } from "./NotificationDropdown";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -25,11 +26,7 @@ export function AdminLayout() {
                                 </div>
                             </div>
                             <div className="flex items-center justify-end gap-4 w-1/3">
-                                <Button variant="ghost" size="icon" className="rounded-full relative hover:bg-slate-50 transition-colors h-11 w-11" aria-label="Notifications">
-                                    <Notification01Icon size={22} className="text-slate-600" />
-                                    <span className="absolute top-3 right-3 flex h-2 w-2 rounded-full bg-red-500 border-2 border-white" />
-                                    <span className="sr-only">3 unread notifications</span>
-                                </Button>
+                                <NotificationDropdown />
                                 <div className="flex items-center gap-3 pl-2 border-l border-slate-100">
                                     <div className="flex flex-col items-end mr-1">
                                         <span className="text-sm font-medium text-slate-800">Prof. Eze Nwosu</span>
