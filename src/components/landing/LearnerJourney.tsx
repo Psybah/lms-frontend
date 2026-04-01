@@ -81,7 +81,7 @@ export function LearnerJourney() {
                 >
                     <div className="relative flex flex-col">
                         {/* Continuous timeline line background */}
-                        <div className="absolute left-[36px] sm:left-[52px] -translate-x-1/2 top-4 bottom-4 w-[2px] bg-slate-100 overflow-hidden">
+                        <div className="absolute left-[28px] sm:left-[52px] -translate-x-1/2 top-4 bottom-4 w-[2px] bg-slate-100 overflow-hidden">
                             {/* Animated colored progress line */}
                             <div 
                                 className="absolute top-0 left-0 w-full bg-primary"
@@ -95,11 +95,11 @@ export function LearnerJourney() {
                             return (
                                 <div
                                     key={item.step}
-                                    className="journey-step relative flex items-center h-[300px] shrink-0 snap-center pl-24 sm:pl-32 pr-8"
+                                    className="journey-step relative flex items-center h-[300px] shrink-0 snap-center pl-[76px] sm:pl-32 pr-4 sm:pr-8"
                                     data-step={item.step}
                                 >
                                     {/* The Icon Container */}
-                                    <div className="absolute left-[36px] sm:left-[52px] -translate-x-1/2 flex items-center justify-center">
+                                    <div className="absolute left-[28px] sm:left-[52px] -translate-x-1/2 flex items-center justify-center">
                                         <div
                                             className={cn(
                                                 "h-12 w-12 rounded-full border-2 transition-all duration-500 bg-white z-10 flex items-center justify-center shadow-sm",

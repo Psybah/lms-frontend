@@ -45,7 +45,7 @@ export function FAQ() {
                     </p>
                 </div>
 
-                <div className="bg-white rounded-[2rem] p-6 lg:p-10 border border-slate-100">
+                <div className="bg-white rounded-[2rem] p-4 sm:p-6 lg:p-10 border border-slate-100">
                     <Accordion type="single" collapsible className="w-full">
                         {faqs.map((faq, index) => (
                             <AccordionItem key={index} value={`item-${index}`} className="border-slate-100">

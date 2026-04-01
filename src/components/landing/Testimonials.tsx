@@ -82,8 +82,8 @@ export function Testimonials() {
                 <div className="relative flex overflow-x-hidden group">
                     <div className="animate-marquee flex gap-3 min-w-full group-hover:[animation-play-state:paused] shrink-0">
                         {testimonials.map((t, idx) => (
-                            <Card key={`t1-${idx}`} className="border-slate-100 rounded-2xl shadow-none w-[340px] shrink-0">
-                                <CardContent className="p-8 space-y-6 flex flex-col justify-between h-full">
+                            <Card key={`t1-${idx}`} className="border-slate-100 rounded-2xl shadow-none w-[280px] sm:w-[340px] shrink-0">
+                                <CardContent className="p-6 sm:p-8 space-y-6 flex flex-col justify-between h-full">
                                     <p className="text-[15px] text-slate-600 leading-relaxed font-normal">
                                         "{t.quote}"
                                     </p>
@@ -105,8 +105,8 @@ export function Testimonials() {
                     {/* Duplicate for seamless looping */}
                     <div className="animate-marquee flex gap-4 min-w-full group-hover:[animation-play-state:paused] shrink-0 ml-4 border-none">
                         {testimonials.map((t, idx) => (
-                            <Card key={`t2-${idx}`} className="border-slate-100 rounded-2xl shadow-none w-[340px] shrink-0 border-none">
-                                <CardContent className="p-8 space-y-6 flex flex-col justify-between h-full border-none">
+                            <Card key={`t2-${idx}`} className="border-slate-100 rounded-2xl shadow-none w-[280px] sm:w-[340px] shrink-0 border-none">
+                                <CardContent className="p-6 sm:p-8 space-y-6 flex flex-col justify-between h-full border-none">
                                     <p className="text-[15px] text-slate-600 leading-relaxed font-normal">
                                         "{t.quote}"
                                     </p>

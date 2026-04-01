@@ -89,7 +89,7 @@ export function Programs() {
                                 <Card
                                     key={program.title}
                                     className={cn(
-                                        "border-none rounded-2xl shadow-none overflow-hidden flex flex-col justify-between min-h-[460px] p-8 shrink-0 w-[300px] sm:w-[320px] snap-start",
+                                        "border-none rounded-2xl shadow-none overflow-hidden flex flex-col justify-between min-h-[400px] sm:min-h-[460px] p-6 sm:p-8 shrink-0 w-[270px] sm:w-[320px] snap-start",
                                         cardBg
                                     )}
                                 >

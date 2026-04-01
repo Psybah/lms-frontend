@@ -5,7 +5,7 @@ import { ArrowRight01Icon } from "hugeicons-react";
 
 export function Hero() {
     return (
-        <section className="relative m-4 rounded-2xl overflow-hidden min-h-[95vh] flex items-end shadow-lg shadow-slate-200/50">
+        <section className="relative m-2 sm:m-4 rounded-2xl overflow-hidden min-h-[95vh] sm:min-h-[95vh] flex items-end shadow-lg shadow-slate-200/50">
             {/* Background Image */}
             <div className="absolute inset-0">
                 <img
@@ -17,10 +17,10 @@ export function Hero() {
             </div>
 
             {/* Content aligned to bottom-left */}
-            <div className="relative w-full max-w-7xl mx-auto px-6 lg:px-12 pb-10 lg:pb-10">
-                <div className="max-w-3xl space-y-6">
+            <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pb-8 sm:pb-10 lg:pb-10">
+                <div className="max-w-3xl space-y-4 sm:space-y-6">
 
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white leading-[1.1]">
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white leading-[1.15]">
                         Learn. Certify. Advance.
                     </h1>
 
@@ -28,9 +28,9 @@ export function Hero() {
                         Professional training in ICT, research methods, and technical skills. Enrol, attend, and earn verified institutional credentials.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row items-start gap-4 pt-4">
-                        <Link to="/signup">
-                            <Button className="h-12 px-8 rounded-full bg-primary hover:bg-primary/90 text-white font-medium text-base gap-2 border-none">
+                    <div className="flex flex-col sm:flex-row items-start gap-4 pt-4 w-full sm:w-auto">
+                        <Link to="/signup" className="w-full sm:w-auto">
+                            <Button className="w-full sm:w-auto h-12 px-8 rounded-full bg-primary hover:bg-primary/90 text-white font-medium text-base gap-2 border-none">
                                 Browse Programmes
                                 <ArrowRight01Icon size={16} />
                             </Button>
