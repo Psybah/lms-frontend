@@ -41,7 +41,7 @@ export default function MyLearning() {
                         </p>
                     </div>
                     <div className="flex items-center gap-3">
-                        <div className="relative group lg:w-72">
+                        <div className="relative group w-full lg:w-72">
                             <Search01Icon size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors" />
                             <input
                                 type="text"
@@ -106,7 +106,7 @@ export default function MyLearning() {
             {/* Grid Section */}
             {activeTab === 'catalog' ? (
                 filteredCourses.length > 0 ? (
-                    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+                    <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-3 xl:grid-cols-4">
                         {filteredCourses.map((course) => (
                             <CourseCard key={course.id} course={course} />
                         ))}
@@ -124,7 +124,7 @@ export default function MyLearning() {
                 myCourses.length === 0 ? (
                     <MyCoursesEmptyState />
                 ) : (
-                    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+                    <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-3 xl:grid-cols-4">
                         {myCourses.map((course) => (
                             <CourseCard key={course.id} course={course} />
                         ))}

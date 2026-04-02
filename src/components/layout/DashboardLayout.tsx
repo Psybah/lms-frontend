@@ -11,7 +11,7 @@ export function DashboardLayout() {
             <div className="flex h-screen w-full bg-slate-100 overflow-hidden font-sans">
                 <AppSidebar />
                 <SidebarInset className="flex flex-col bg-white md:bg-slate-100 overflow-hidden">
-                    <div className="flex-1 m-0 md:my-3 md:mr-3 rounded-none md:rounded-3xl bg-white md:border md:border-slate-200 overflow-hidden flex flex-col relative pb-20 md:pb-0">
+                    <div className="flex-1 m-0 md:my-3 md:mr-3 rounded-none md:rounded-3xl bg-white md:border md:border-slate-200 overflow-hidden flex flex-col relative">
                         <header className="flex h-16 md:h-20 shrink-0 items-center justify-between px-4 md:px-10 border-b border-slate-100 z-10 bg-white">
                             <div className="flex items-center gap-3 w-1/2 md:w-1/3">
                                 <div className="relative group w-full max-w-sm">
@@ -30,7 +30,7 @@ export function DashboardLayout() {
                             </div>
                         </header>
 
-                        <main className="flex-1 overflow-auto p-4 md:p-10">
+                        <main className="flex-1 overflow-auto p-4 pb-24 md:p-10">
                             <div className="mx-auto max-w-7xl">
                                 <Outlet />
                             </div>

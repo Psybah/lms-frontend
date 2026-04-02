@@ -46,10 +46,10 @@ export function CertificateCard({ certificate, onView }: CertificateCardProps) {
     return (
         <div
             onClick={() => onView(certificate)}
-            className="group bg-white rounded-3xl p-3 border border-slate-100 transition-all duration-300 flex flex-col h-full relative cursor-pointer hover:shadow-sm"
+            className="group bg-white rounded-2xl md:rounded-3xl p-2 md:p-3 border border-slate-100 transition-all duration-300 flex flex-col h-full relative cursor-pointer hover:shadow-sm"
         >
-            {/* Image Container - Matching CourseCard aspect ratio */}
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-50 border border-slate-100">
+            {/* Image Container */}
+            <div className="relative aspect-[4/3] rounded-xl md:rounded-2xl overflow-hidden mb-2 md:mb-4 bg-slate-50 border border-slate-100">
                 <img
                     src={certificate.imageUrl}
                     alt={certificate.courseTitle}
@@ -60,33 +60,33 @@ export function CertificateCard({ certificate, onView }: CertificateCardProps) {
             </div>
 
             {/* Content Area */}
-            <div className="flex flex-col flex-1 px-1">
-                <div className="mb-4">
-                    <h3 className="text-lg font-medium text-slate-900 leading-snug mb-1 line-clamp-2">
+            <div className="flex flex-col flex-1 px-0.5 md:px-1">
+                <div className="mb-2 md:mb-4">
+                    <h3 className="text-sm md:text-lg font-medium text-slate-900 leading-snug mb-0.5 md:mb-1 line-clamp-2">
                         {certificate.courseTitle}
                     </h3>
-                    <div className="flex items-center gap-1.5 text-slate-400 font-medium text-[10px] uppercase tracking-wider">
+                    <div className="flex items-center gap-1.5 text-slate-400 font-medium text-[9px] md:text-[10px] uppercase tracking-wider">
                         <span>Issued {certificate.issueDate}</span>
                     </div>
                 </div>
 
-                <div className="mt-auto flex items-center gap-2">
+                <div className="mt-auto flex items-center gap-1.5 md:gap-2">
                     <Button
-                        className="flex-1 h-11 rounded-full bg-accent/70 hover:bg-accent/40 text-primary font-normal text-sm transition-all duration-300"
+                        className="flex-1 h-8 md:h-11 rounded-full bg-accent/70 hover:bg-accent/40 text-primary font-normal text-xs md:text-sm transition-all duration-300"
                         onClick={(e) => {
                             e.stopPropagation();
                             onView(certificate);
                         }}
                     >
-                        View Certificate
+                        View
                     </Button>
                     <Button
                         variant="secondary"
                         size="icon"
                         onClick={handleDownload}
-                        className="h-11 w-11 rounded-full bg-slate-100 border-none shadow-none text-slate-400 hover:text-primary hover:bg-primary/5 transition-all"
+                        className="h-8 w-8 md:h-11 md:w-11 rounded-full bg-slate-100 border-none shadow-none text-slate-400 hover:text-primary hover:bg-primary/5 transition-all"
                     >
-                        <Download01Icon size={18} />
+                        <Download01Icon size={16} />
                     </Button>
                 </div>
             </div>

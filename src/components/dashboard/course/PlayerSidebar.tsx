@@ -28,7 +28,7 @@ interface PlayerSidebarProps {
 export function PlayerSidebar({ course, currentModuleId, currentItemId, onItemClick, onBack, isCollapsed, onToggle }: PlayerSidebarProps) {
     return (
         <div className={cn(
-            "border-r border-slate-100 flex flex-col bg-slate-50/30 transition-all duration-300 relative",
+            "border-r border-slate-100 flex flex-col bg-white sm:bg-slate-50/30 transition-all duration-300 relative h-full",
             isCollapsed ? "w-16" : "w-80"
         )}>
             <div className={cn("p-6 border-b border-slate-100", isCollapsed && "px-3")}>

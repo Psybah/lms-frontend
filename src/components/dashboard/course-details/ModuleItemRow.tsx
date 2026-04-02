@@ -31,30 +31,30 @@ export function ModuleItemRow({ item, module, course, isPurchased }: ModuleItemR
         <div
             onClick={() => isPurchased && navigate(`/dashboard/player/${course.id}/${module.id}/${item.id}`)}
             className={cn(
-                "flex items-center justify-between py-3 px-4 rounded-xl transition-all border border-transparent",
+                "flex items-center justify-between py-2.5 sm:py-3 px-2.5 sm:px-4 rounded-lg sm:rounded-xl transition-all border border-transparent",
                 isPurchased
                     ? "hover:bg-white hover:border-slate-100 hover:shadow-sm group/item cursor-pointer"
                     : "opacity-60 cursor-not-allowed"
             )}
         >
-            <div className="flex items-center gap-4 text-left">
+            <div className="flex items-center gap-2.5 sm:gap-4 text-left min-w-0">
                 <div className={cn(
-                    "h-8 w-8 rounded-lg bg-white border border-slate-100 flex items-center justify-center text-slate-400 transition-colors",
+                    "h-7 w-7 sm:h-8 sm:w-8 rounded-lg bg-white border border-slate-100 flex items-center justify-center text-slate-400 transition-colors shrink-0",
                     isPurchased && "group-hover/item:text-primary"
                 )}>
                     {getIcon()}
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col min-w-0">
                     <span className={cn(
-                        "text-sm font-medium transition-colors",
+                        "text-xs sm:text-sm font-medium transition-colors truncate",
                         isPurchased ? "text-slate-600 group-hover/item:text-slate-900" : "text-slate-400"
                     )}>
                         {item.title}
                     </span>
-                    <span className="text-[9px] text-slate-400 uppercase tracking-widest font-medium">{item.type}</span>
+                    <span className="text-[8px] sm:text-[9px] text-slate-400 uppercase tracking-widest font-medium">{item.type}</span>
                 </div>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 shrink-0">
                 {!isPurchased && <LockPasswordIcon size={14} className="text-slate-300" />}
                 {isPurchased && (
                     <ArrowRight01Icon size={14} className="text-slate-200 group-hover/item:text-primary transition-all translate-x-1 group-hover/item:translate-x-0 opacity-0 group-hover/item:opacity-100" />

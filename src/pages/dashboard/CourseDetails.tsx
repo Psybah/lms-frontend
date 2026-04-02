@@ -41,12 +41,12 @@ export default function CourseDetails() {
     const pricing = getPrice();
 
     return (
-        <div className="flex flex-col gap-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <div className="flex flex-col gap-4 sm:gap-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <CourseHero course={course} />
 
-            <div className="grid gap-8 lg:grid-cols-3 px-2 pb-20">
+            <div className="grid gap-4 sm:gap-8 lg:grid-cols-3 px-1 sm:px-2 pb-20">
                 {/* Main Content Area */}
-                <div className="lg:col-span-2 space-y-8">
+                <div className="lg:col-span-2 space-y-4 sm:space-y-8">
                     <CourseQuickInfo course={course} />
                     <CourseModuleList course={course} isPurchased={isPurchased} />
                 </div>

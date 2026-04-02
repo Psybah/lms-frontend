@@ -25,51 +25,52 @@ export function EnrollmentCard({ course, isPurchased, pricing }: EnrollmentCardP
     const navigate = useNavigate();
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
             {isPurchased ? (
-                <div className="bg-white rounded-3xl border border-slate-100 p-8 space-y-6 sticky top-3">
-                    <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto">
-                        <Archive01Icon size={32} />
+                <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-100 p-5 sm:p-8 space-y-4 sm:space-y-6 sticky top-3">
+                    <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto">
+                        <Archive01Icon size={24} className="sm:hidden" />
+                        <Archive01Icon size={32} className="hidden sm:block" />
                     </div>
-                    <div className="text-center space-y-2">
-                        <h3 className="text-xl font-medium text-slate-900">Enrolled Course</h3>
-                        <p className="text-sm text-slate-500 font-medium">You have full access to this course's materials and lessons.</p>
+                    <div className="text-center space-y-1 sm:space-y-2">
+                        <h3 className="text-lg sm:text-xl font-medium text-slate-900">Enrolled Course</h3>
+                        <p className="text-xs sm:text-sm text-slate-500 font-medium">You have full access to this course's materials and lessons.</p>
                     </div>
                     <Button
                         onClick={() => navigate(`/dashboard/player/${course.id}/${course.modules[0]?.id}/${course.modules[0]?.items[0]?.id}`)}
-                        className="w-full h-14 rounded-full bg-primary hover:bg-primary/90 text-white font-medium text-base transition-all shadow-lg shadow-primary/5"
+                        className="w-full h-11 sm:h-14 rounded-full bg-primary hover:bg-primary/90 text-white font-medium text-sm sm:text-base transition-all shadow-lg shadow-primary/5"
                     >
                         Continue Learning
                         <PlayIcon size={18} className="ml-2" />
                     </Button>
                 </div>
             ) : (
-                <div className="bg-white rounded-3xl border border-slate-100 p-8 space-y-5 sticky top-3">
-                    <div className="space-y-4 text-left">
+                <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-100 p-5 sm:p-8 space-y-4 sm:space-y-5 sticky top-3">
+                    <div className="space-y-3 sm:space-y-4 text-left">
                         <div className="flex flex-col gap-1">
                             <span className="text-[10px] font-medium text-slate-400 uppercase tracking-widest">Course Fee</span>
                             {typeof pricing === 'string' ? (
-                                <span className="text-4xl font-medium text-primary">{pricing}</span>
+                                <span className="text-3xl sm:text-4xl font-medium text-primary">{pricing}</span>
                             ) : (
                                 <div className="space-y-2">
-                                    <div className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-200">
+                                    <div className="flex items-center justify-between p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200">
                                         <span className="text-xs font-medium text-slate-500">Cohort</span>
-                                        <span className="text-xl font-medium text-primary">{pricing.cohort}</span>
+                                        <span className="text-lg sm:text-xl font-medium text-primary">{pricing.cohort}</span>
                                     </div>
-                                    <div className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-200">
+                                    <div className="flex items-center justify-between p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200">
                                         <span className="text-xs font-medium text-slate-500">Special</span>
-                                        <span className="text-xl font-medium text-primary">{pricing.special}</span>
+                                        <span className="text-lg sm:text-xl font-medium text-primary">{pricing.special}</span>
                                     </div>
                                 </div>
                             )}
                         </div>
-                        <div className="flex items-center justify-between text-sm py-4 border-y border-slate-100 font-medium">
+                        <div className="flex items-center justify-between text-xs sm:text-sm py-3 sm:py-4 border-y border-slate-100 font-medium">
                             <span className="text-slate-400">Application Form</span>
                             <span className="text-slate-900">₦{courseMetadata.applicationFee.toLocaleString()}</span>
                         </div>
                     </div>
 
-                    <Button className="w-full h-14 rounded-full bg-primary hover:bg-primary/90 text-white font-medium text-base transition-all shadow-lg shadow-primary/5">
+                    <Button className="w-full h-11 sm:h-14 rounded-full bg-primary hover:bg-primary/90 text-white font-medium text-sm sm:text-base transition-all shadow-lg shadow-primary/5">
                         Apply for Admission
                     </Button>
 
