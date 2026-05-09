@@ -22,7 +22,7 @@ const testimonials = [
         avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=adewale",
     },
     {
-        quote: "TRD completely transformed my understanding of compliance. Now, our operations align flawlessly with standard safety protocols.",
+        quote: "Davidson Tech Academy completely transformed my understanding of compliance. Now, our operations align flawlessly with standard safety protocols.",
         name: "Yewande Balogun",
         role: "Operations Manager",
         avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=yewande",
@@ -58,7 +58,7 @@ const testimonials = [
         avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=tunde",
     },
     {
-        quote: "From applying to graduating, the TRD Learning Management System was seamless and incredibly intuitive to use.",
+        quote: "From applying to graduating, the Davidson Tech Academy platform was seamless and incredibly intuitive to use.",
         name: "Flora Etim",
         role: "Postgraduate Student",
         avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=flora",

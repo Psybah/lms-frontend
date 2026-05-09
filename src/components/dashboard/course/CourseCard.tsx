@@ -62,7 +62,7 @@ export function CourseCard({ course }: CourseCardProps) {
                     <span className="hidden sm:inline">{course.duration}</span>
                     <span className="hidden sm:inline text-slate-200 text-base leading-none relative -top-[1px]">•</span>
                     <span className="truncate max-w-[70px] md:max-w-[90px]" title={course.location}>
-                        {course.location.includes("ITeMS") ? "UI" : course.location}
+                        {course.location.includes("Oba Olagbegi") || course.location.includes("New Bodija") ? "New Bodija" : course.location}
                     </span>
                     <span className="text-slate-200 text-base leading-none relative -top-[1px]">•</span>
                     <span>{course.seats.enrolled}/{course.seats.total}</span>

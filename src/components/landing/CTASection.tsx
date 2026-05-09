@@ -12,7 +12,7 @@ export function CTASection() {
 
                     <div className="relative text-center py-12 sm:py-16 lg:py-20 px-6 sm:px-8 space-y-6">
                         <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-white">
-                            Begin your next programme with TRD, ITeMS.
+                            Begin your next cohort at Davidson Tech Academy.
                         </h2>
                         <p className="text-base text-white/80 max-w-lg mx-auto font-normal leading-relaxed">
                             Join hundreds of professionals advancing their careers with structured, verified ICT training.

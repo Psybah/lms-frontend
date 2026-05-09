@@ -8,12 +8,12 @@ import {
 
 const faqs = [
     {
-        question: "Who can enrol in TRD programmes?",
-        answer: "TRD programmes are open to University of Ibadan staff, current students, and external professionals looking to advance their skills. Select courses may have specific prerequisite requirements.",
+        question: "Who can enrol in Davidson Tech Academy programmes?",
+        answer: "Programmes are designed for Davidson University students stepping into tech, alongside community learners who want structured, on-campus training. Some tracks may list prerequisites—check each cohort for details.",
     },
     {
         question: "Are the certificates institutionally recognised?",
-        answer: "Yes. All certificates issued upon successful completion of a programme are fully recognised by the Training, Research and Development Unit (TRD) and ITeMS, University of Ibadan.",
+        answer: "Yes. Certificates earned through Davidson Tech Academy reflect completion of our approved pathways and are issued under Davidson University.",
     },
     {
         question: "How are the classes delivered?",

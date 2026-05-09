@@ -9,43 +9,31 @@ const programs = [
         title: "Research Methods & Scientific Writing",
         description: "Build the foundational skills to design rigorous studies, analyse data, and communicate findings clearly to academic and professional audiences.",
         icon: MicroscopeIcon,
-        gradient: "from-blue-500/10 to-indigo-500/5",
-        iconBg: "bg-blue-50 text-blue-600",
     },
     {
         title: "Health & Safety Compliance",
         description: "Mandatory and elective programmes covering regulatory standards, workplace safety protocols, and risk management frameworks.",
         icon: HealthIcon,
-        gradient: "from-emerald-500/10 to-green-500/5",
-        iconBg: "bg-emerald-50 text-emerald-600",
     },
     {
         title: "Data Analysis & Reporting",
         description: "From spreadsheet literacy to statistical modelling — practical training programmes that turn raw data into actionable insights.",
         icon: Chart02Icon,
-        gradient: "from-violet-500/10 to-purple-500/5",
-        iconBg: "bg-violet-50 text-violet-600",
     },
     {
         title: "Leadership & Professional Development",
         description: "Structured courses in organisational leadership, communication, project management, and decision-making for career advancement.",
         icon: Briefcase01Icon,
-        gradient: "from-amber-500/10 to-orange-500/5",
-        iconBg: "bg-amber-50 text-amber-600",
     },
     {
         title: "Technical Skills & Engineering",
         description: "Hands-on training in engineering practices, technical documentation, and discipline-specific tools across multiple specialisations.",
         icon: Target01Icon,
-        gradient: "from-cyan-500/10 to-sky-500/5",
-        iconBg: "bg-cyan-50 text-cyan-600",
     },
     {
         title: "Academic & Continuing Education",
         description: "Refresher courses, specialisation tracks, and certification pathways designed for working professionals seeking to upskill.",
         icon: Mortarboard02Icon,
-        gradient: "from-rose-500/10 to-pink-500/5",
-        iconBg: "bg-rose-50 text-rose-600",
     },
 ];
 
@@ -67,7 +55,7 @@ export function Programs() {
                         Programme Areas
                     </Badge>
                     <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-slate-900">
-                        What TRD offers
+                        What Davidson Tech Academy offers
                     </h2>
                     <p className="text-slate-500 max-w-xl mx-auto font-normal text-base leading-relaxed">
                         Our programmes span six core disciplines <br className="hidden lg:block" /> structured to meet you where you are and take you further.
@@ -83,13 +71,14 @@ export function Programs() {
                     >
                         {programs.map((program, idx) => {
                             const isPrimary = idx % 2 === 0;
-                            const cardBg = isPrimary ? "bg-primary" : "bg-[#4C73E6]";
+                            /* Alternate: lighter brown, same family as primary #503723 */
+                            const cardBg = isPrimary ? "!bg-primary" : "!bg-[#6E4E38]";
 
                             return (
                                 <Card
                                     key={program.title}
                                     className={cn(
-                                        "border-none rounded-2xl shadow-none overflow-hidden flex flex-col justify-between min-h-[400px] sm:min-h-[460px] p-6 sm:p-8 shrink-0 w-[270px] sm:w-[320px] snap-start",
+                                        "border-none rounded-2xl shadow-none overflow-hidden flex flex-col justify-between min-h-[400px] sm:min-h-[460px] p-6 sm:p-8 shrink-0 w-[270px] sm:w-[320px] snap-start text-white",
                                         cardBg
                                     )}
                                 >

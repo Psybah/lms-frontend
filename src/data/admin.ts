@@ -46,16 +46,16 @@ export const venueUsage: VenueUsage[] = [
 
 // ─── Users ───
 export const adminUsers: AdminUser[] = [
-    { id: "u-1", name: "Adewale Johnson", email: "adewale.j@trd.edu", role: "student", status: "active", enrolledCourses: 3, joinDate: "Jan 05, 2026", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=adewale" },
-    { id: "u-2", name: "Dr. Funke Akindele", email: "funke.a@trd.edu", role: "instructor", status: "active", enrolledCourses: 0, joinDate: "Sep 12, 2025", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=funke" },
-    { id: "u-3", name: "Chinedu Okafor", email: "chinedu.o@trd.edu", role: "student", status: "active", enrolledCourses: 2, joinDate: "Feb 01, 2026", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=chinedu" },
-    { id: "u-4", name: "Halima Bello", email: "halima.b@trd.edu", role: "student", status: "suspended", enrolledCourses: 1, joinDate: "Nov 20, 2025", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=halima" },
-    { id: "u-5", name: "Prof. Eze Nwosu", email: "eze.n@trd.edu", role: "admin", status: "active", enrolledCourses: 0, joinDate: "Jun 01, 2025", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=eze" },
-    { id: "u-6", name: "Oluwaseun Fadare", email: "seun.f@trd.edu", role: "instructor", status: "active", enrolledCourses: 0, joinDate: "Aug 15, 2025", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=seun" },
-    { id: "u-7", name: "Amaka Eze", email: "amaka.e@trd.edu", role: "student", status: "pending", enrolledCourses: 0, joinDate: "Feb 20, 2026", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=amaka" },
-    { id: "u-8", name: "Ibrahim Musa", email: "ibrahim.m@trd.edu", role: "student", status: "active", enrolledCourses: 4, joinDate: "Oct 10, 2025", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=ibrahim" },
-    { id: "u-9", name: "Ngozi Obi", email: "ngozi.o@trd.edu", role: "student", status: "active", enrolledCourses: 2, joinDate: "Dec 03, 2025", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=ngozi" },
-    { id: "u-10", name: "Yusuf Abdullahi", email: "yusuf.a@trd.edu", role: "student", status: "active", enrolledCourses: 1, joinDate: "Jan 18, 2026", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=yusuf" },
+    { id: "u-1", name: "Adewale Johnson", email: "adewale.j@davidson.edu", role: "student", status: "active", enrolledCourses: 3, joinDate: "Jan 05, 2026", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=adewale" },
+    { id: "u-2", name: "Dr. Funke Akindele", email: "funke.a@davidson.edu", role: "instructor", status: "active", enrolledCourses: 0, joinDate: "Sep 12, 2025", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=funke" },
+    { id: "u-3", name: "Chinedu Okafor", email: "chinedu.o@davidson.edu", role: "student", status: "active", enrolledCourses: 2, joinDate: "Feb 01, 2026", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=chinedu" },
+    { id: "u-4", name: "Halima Bello", email: "halima.b@davidson.edu", role: "student", status: "suspended", enrolledCourses: 1, joinDate: "Nov 20, 2025", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=halima" },
+    { id: "u-5", name: "Prof. Eze Nwosu", email: "eze.n@davidson.edu", role: "admin", status: "active", enrolledCourses: 0, joinDate: "Jun 01, 2025", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=eze" },
+    { id: "u-6", name: "Oluwaseun Fadare", email: "seun.f@davidson.edu", role: "instructor", status: "active", enrolledCourses: 0, joinDate: "Aug 15, 2025", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=seun" },
+    { id: "u-7", name: "Amaka Eze", email: "amaka.e@davidson.edu", role: "student", status: "pending", enrolledCourses: 0, joinDate: "Feb 20, 2026", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=amaka" },
+    { id: "u-8", name: "Ibrahim Musa", email: "ibrahim.m@davidson.edu", role: "student", status: "active", enrolledCourses: 4, joinDate: "Oct 10, 2025", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=ibrahim" },
+    { id: "u-9", name: "Ngozi Obi", email: "ngozi.o@davidson.edu", role: "student", status: "active", enrolledCourses: 2, joinDate: "Dec 03, 2025", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=ngozi" },
+    { id: "u-10", name: "Yusuf Abdullahi", email: "yusuf.a@davidson.edu", role: "student", status: "active", enrolledCourses: 1, joinDate: "Jan 18, 2026", avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=yusuf" },
 ];
 
 // ─── Waitlist ───

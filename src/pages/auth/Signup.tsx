@@ -66,7 +66,7 @@ export default function Signup() {
         <div className="w-full space-y-8">
             <div className="space-y-1">
                 <h1 className="text-2xl font-medium text-slate-900">Create account</h1>
-                <p className="text-sm text-slate-500 font-normal">Join the TRD Learning Platform to get started.</p>
+                <p className="text-sm text-slate-500 font-normal">Join Davidson Tech Academy to get started.</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -89,7 +89,7 @@ export default function Signup() {
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                     <AuthFormField
-                        label="Organization" id="organization" placeholder="University of Ibadan"
+                        label="Organization" id="organization" placeholder="Davidson University"
                         value={form.organization} onChange={e => setForm(f => ({ ...f, organization: e.target.value }))}
                         disabled={loading}
                     />

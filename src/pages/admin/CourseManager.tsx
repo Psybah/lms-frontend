@@ -346,7 +346,7 @@ export default function CourseManager() {
                             <input
                                 id="course-venue"
                                 defaultValue={editCourse?.location || ""}
-                                placeholder="e.g. Training Lab 1, ITeMS Building"
+                                placeholder="e.g. Training Lab 1, Oba Olagbegi Street, New Bodija"
                                 className="h-11 w-full px-4 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:ring-2 focus:ring-primary/10 transition-all outline-none placeholder:text-slate-400"
                             />
                         </div>

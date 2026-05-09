@@ -68,7 +68,7 @@ export default function StaffLogin() {
                     label="Staff Email"
                     id="staff-email"
                     type="email"
-                    placeholder="your.name@trd.edu"
+                    placeholder="your.name@davidson.edu"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required

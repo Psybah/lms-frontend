@@ -55,7 +55,7 @@ export function AdminSidebar() {
     return (
         <Sidebar collapsible="none" className="w-20 bg-slate-100 p-0 overflow-visible">
             <SidebarHeader className="flex items-center justify-center pt-10 pb-6">
-                <img src="/logo.png" alt="TRD Admin" className="h-10 w-10 object-contain" />
+                <img src="/logo.png" alt="Davidson University Admin" className="h-10 w-10 object-contain" />
             </SidebarHeader>
             <SidebarContent className="px-2 overflow-visible">
                 <SidebarMenu className="gap-2">

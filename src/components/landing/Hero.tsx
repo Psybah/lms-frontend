@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { ArrowRight01Icon } from "hugeicons-react";
 
 export function Hero() {
@@ -9,11 +8,11 @@ export function Hero() {
             {/* Background Image */}
             <div className="absolute inset-0">
                 <img
-                    src="/assets/trd.png"
-                    alt="TRD Training Session"
+                    src="/assets/davidson-academy.jpeg"
+                    alt="Davidson Tech Academy"
                     className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-black/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#503723]/42 via-[#503723]/14 to-transparent" />
             </div>
 
             {/* Content aligned to bottom-left */}
@@ -25,7 +24,7 @@ export function Hero() {
                     </h1>
 
                     <p className="text-lg sm:text-xl text-slate-200 font-normal max-w-2xl leading-relaxed">
-                        Professional training in ICT, research methods, and technical skills. Enrol, attend, and earn verified institutional credentials.
+                        Join Davidson Tech Academy—hands-on tech programmes for students and lifelong learners. Enrol, attend on campus at New Bodija, and earn verified credentials.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-start gap-4 pt-4 w-full sm:w-auto">

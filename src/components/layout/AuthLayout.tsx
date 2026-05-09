@@ -1,5 +1,3 @@
-import { Link, useLocation } from "react-router-dom";
-
 interface AuthLayoutProps {
     children: React.ReactNode;
 }
@@ -10,23 +8,23 @@ export function AuthLayout({ children }: AuthLayoutProps) {
             {/* Left Panel - Brand Image */}
             <div className="hidden lg:flex w-1/2 relative m-4 rounded-2xl overflow-hidden shrink-0">
                 <img
-                    src="/assets/trd.png"
-                    alt="TRD Brand"
+                    src="/assets/davidson-academy.jpeg"
+                    alt="Davidson Tech Academy"
                     className="absolute inset-0 w-full h-full object-cover"
                 />
                 {/* Bottom gradient with tagline */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#503723]/50 via-[#503723]/12 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-10 text-white">
                     <div className="mb-3">
                         <span className="text-xs font-normal uppercase tracking-widest text-white/60">
-                            TRD · ITeMS, University of Ibadan
+                            Davidson Tech Academy
                         </span>
                     </div>
                     <h2 className="text-3xl font-medium leading-snug mb-3">
                         Learn, Certify, and Advance.
                     </h2>
                     <p className="text-sm text-white/70 font-normal leading-relaxed max-w-sm">
-                        The Training, Research and Development Unit — building professional capacity for the University of Ibadan community and beyond.
+                        Davidson Tech Academy helps students step into software, data, and digital careers—with on-campus learning at Oba Olagbegi Street, New Bodija.
                     </p>
                 </div>
             </div>
@@ -36,8 +34,8 @@ export function AuthLayout({ children }: AuthLayoutProps) {
                 <div className="flex-1 flex flex-col justify-center items-center min-h-full px-6 py-10 lg:py-0 lg:px-12 max-w-lg mx-auto w-full">
                     {/* Logo for mobile / top of form */}
                     <div className="flex flex-col items-center mb-10">
-                        <img src="/logo.png" alt="TRD-LMS" className="h-12 w-12 object-contain mb-4" />
-                        <span className="text-xs font-medium uppercase tracking-widest text-slate-400">TRD-LMS Portal</span>
+                        <img src="/logo.png" alt="Davidson Tech Academy" className="h-12 w-12 object-contain mb-4" />
+                        <span className="text-xs font-medium uppercase tracking-widest text-slate-400">Davidson Tech Academy</span>
                     </div>
                     {children}
                 </div>

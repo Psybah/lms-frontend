@@ -18,14 +18,14 @@ export function Footer() {
                                 }
                             }}
                         >
-                            <img src="/logo.png" alt="TRD" className="h-8 w-8 object-cover rounded-lg" />
+                            <img src="/logo.png" alt="Davidson Tech Academy" className="h-8 w-8 object-cover rounded-lg" />
                             <div className="flex flex-col">
-                                <span className="text-sm font-medium text-slate-900 leading-tight">TRD LMS</span>
-                                <span className="text-[10px] text-slate-500 font-medium">University of Ibadan</span>
+                                <span className="text-sm font-medium text-slate-900 leading-tight">Davidson Tech Academy</span>
+                                <span className="text-[10px] text-slate-500 font-medium">Davidson University</span>
                             </div>
                         </Link>
                         <p className="text-sm text-slate-500 leading-relaxed pr-4">
-                            Excellence in ICT, research methods, and technical training for students and professionals.
+                            Tech skills and credentials for Davidson University students and the wider community—on campus at Oba Olagbegi Street, New Bodija.
                         </p>
                     </div>
 
@@ -34,7 +34,7 @@ export function Footer() {
                         <h4 className="text-sm font-semibold text-slate-900">Navigation</h4>
                         <ul className="space-y-3 text-sm text-slate-500">
                             <li><a href="#programs" className="hover:text-primary transition-colors">Programmes</a></li>
-                            <li><a href="#why-trd" className="hover:text-primary transition-colors">Why TRD</a></li>
+                            <li><a href="#why-davidson" className="hover:text-primary transition-colors">Why Davidson</a></li>
                             <li><a href="#journey" className="hover:text-primary transition-colors">Your Journey</a></li>
                         </ul>
                     </div>
@@ -68,7 +68,7 @@ export function Footer() {
 
                 <div className="border-t border-slate-100 pt-8 flex flex-col items-center justify-center text-center">
                     <p className="text-xs text-slate-400 font-medium">
-                        &copy; {new Date().getFullYear()} TRD · ITeMS, University of Ibadan. All rights reserved.
+                        &copy; {new Date().getFullYear()} Davidson University · Davidson Tech Academy. All rights reserved.
                     </p>
                 </div>
             </div>

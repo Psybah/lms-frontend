@@ -23,16 +23,16 @@ export function Navbar() {
                         }
                     }}
                 >
-                    <img src="/logo.png" alt="TRD" className="h-8 w-8 object-cover rounded-lg" />
+                    <img src="/logo.png" alt="Davidson Tech Academy" className="h-8 w-8 object-cover rounded-lg" />
                     <div className="flex flex-col">
-                        <span className="text-sm font-medium text-slate-900 leading-tight">TRD LMS</span>
-                        <span className="text-[10px] text-slate-500 font-medium hidden sm:block">University of Ibadan</span>
+                        <span className="text-sm font-medium text-slate-900 leading-tight">Davidson Tech Academy</span>
+                        <span className="text-[10px] text-slate-500 font-medium hidden sm:block">Davidson University</span>
                     </div>
                 </Link>
 
                 <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
                     <a href="#programs" className="hover:text-primary transition-colors">Programmes</a>
-                    <a href="#why-trd" className="hover:text-primary transition-colors">Why TRD</a>
+                    <a href="#why-davidson" className="hover:text-primary transition-colors">Why Davidson</a>
                     <a href="#journey" className="hover:text-primary transition-colors">Your Journey</a>
                     <a href="#faq" className="hover:text-primary transition-colors">FAQs</a>
                 </div>
@@ -63,7 +63,7 @@ export function Navbar() {
                 <div className="pointer-events-auto absolute top-[76px] sm:top-[80px] w-[calc(100%-32px)] sm:w-[calc(100%-48px)] max-w-md bg-white border border-slate-200/60 shadow-2xl rounded-3xl p-6 flex flex-col gap-6 animate-in slide-in-from-top-4 fade-in duration-200">
                     <div className="flex flex-col space-y-4 text-base font-medium text-slate-700">
                         <a href="#programs" onClick={closeMenu} className="hover:text-primary transition-colors p-2 -mx-2 rounded-lg hover:bg-slate-50">Programmes</a>
-                        <a href="#why-trd" onClick={closeMenu} className="hover:text-primary transition-colors p-2 -mx-2 rounded-lg hover:bg-slate-50">Why TRD</a>
+                        <a href="#why-davidson" onClick={closeMenu} className="hover:text-primary transition-colors p-2 -mx-2 rounded-lg hover:bg-slate-50">Why Davidson</a>
                         <a href="#journey" onClick={closeMenu} className="hover:text-primary transition-colors p-2 -mx-2 rounded-lg hover:bg-slate-50">Your Journey</a>
                         <a href="#faq" onClick={closeMenu} className="hover:text-primary transition-colors p-2 -mx-2 rounded-lg hover:bg-slate-50">FAQs</a>
                     </div>
