@@ -16,7 +16,7 @@ const benefits = [
         image: "/assets/landing-page/expert.jpg"
     },
     {
-        title: "Verified Certification",
+        title: "Govt Approved Certification",
         desc: "Earn institutional certificates recognised by employers and academic bodies.",
         icon: Certificate01Icon,
         image: "/assets/landing-page/certificate.jpg"
