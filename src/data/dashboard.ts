@@ -30,41 +30,41 @@ export const dashboardStats = [
 
 export const continuousLearning = [
     {
-        title: "Advanced Physical Safety 201",
-        module: "Module 3: Emergency Protocol",
+        title: "Full-stack Web Development",
+        module: "Module 1: Web stack orientation",
         progress: "65%",
     },
     {
-        title: "Workplace Ergonomics",
-        module: "Module 1: Introduction",
+        title: "Ethical Hacking and Penetration Testing",
+        module: "Module 1: Pen-test methodology",
         progress: "12%",
     },
     {
         title: "Cybersecurity Fundamentals",
-        module: "Module 4: Phishing Scams",
+        module: "Module 1: Security foundations",
         progress: "88%",
     },
     {
-        title: "Leadership & Management",
-        module: "Module 2: Team Building",
+        title: "Product Management & Design Thinking",
+        module: "Module 1: Product discovery",
         progress: "45%",
     },
 ];
 
 export const upcomingClasses = [
     {
-        title: "Fire Safety Drill",
+        title: "Software Testing & QA Lab",
         date: "Tomorrow, 10:00 AM",
         type: "Practical",
     },
     {
-        title: "Network Administration",
+        title: "Networking Fundamentals",
         date: "Friday, 2:30 PM",
         type: "Theory",
     },
     {
-        title: "Project Management 101",
+        title: "Introduction to AI and ML",
         date: "Mon, 24 Feb, 9:00 AM",
-        type: "Virtual",
+        type: "Lab",
     },
 ];

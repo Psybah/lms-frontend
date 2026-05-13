@@ -25,10 +25,10 @@ import type { ScanResult } from "@/data/admin-types";
 
 // Mock scan results for demo
 const mockScanResults: Record<string, ScanResult> = {
-    "PSW-UI-2026-001": { valid: true, studentName: "Adewale Johnson", passCode: "PSW-UI-2026-001", courseName: "Physical Security Workshop", message: "Entry pass verified. Prerequisite test: Passed." },
-    "LOS-VIRT-2026-045": { valid: true, studentName: "Chinedu Okafor", passCode: "LOS-VIRT-2026-045", courseName: "LMS Onboarding Session", message: "Entry pass verified. Prerequisite test: Passed." },
+    "PSW-UI-2026-001": { valid: true, studentName: "Adewale Johnson", passCode: "PSW-UI-2026-001", courseName: "Ethical Hacking and Penetration Testing", message: "Entry pass verified. Prerequisite test: Passed." },
+    "LOS-VIRT-2026-045": { valid: true, studentName: "Chinedu Okafor", passCode: "LOS-VIRT-2026-045", courseName: "Davidson Tech Academy LMS Onboarding", message: "Entry pass verified. Prerequisite test: Passed." },
     "INVALID-001": { valid: false, studentName: "Unknown", passCode: "INVALID-001", courseName: "N/A", message: "Invalid pass code. No matching entry found." },
-    "EXP-2025-001": { valid: false, studentName: "Halima Bello", passCode: "EXP-2025-001", courseName: "Digital Literacy", message: "Pass expired. Prerequisite test not completed." },
+    "EXP-2025-001": { valid: false, studentName: "Halima Bello", passCode: "EXP-2025-001", courseName: "Introduction to AI and ML", message: "Pass expired. Prerequisite test not completed." },
 };
 
 export default function QRScanner() {

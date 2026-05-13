@@ -19,7 +19,7 @@ import type {
 // ─── Dashboard Stats ───
 export const adminStats: AdminStats[] = [
     { title: "Total Students", value: "1,247", change: "+12%", trend: "up", icon: UserMultiple02Icon },
-    { title: "Ongoing Courses", value: "14", change: "+2", trend: "up", icon: BookOpen01Icon },
+    { title: "Ongoing Courses", value: "15", change: "+2", trend: "up", icon: BookOpen01Icon },
     { title: "Average Pass Rate", value: "78%", change: "+3%", trend: "up", icon: ChartLineData01Icon },
     { title: "Waitlist Depth", value: "32", change: "-5", trend: "down", icon: Clock01Icon },
 ];
@@ -60,10 +60,10 @@ export const adminUsers: AdminUser[] = [
 
 // ─── Waitlist ───
 export const waitlistEntries: WaitlistEntry[] = [
-    { id: "w-1", studentName: "Amaka Eze", courseTitle: "Web Development", requestDate: "Feb 10, 2026", position: 1 },
-    { id: "w-2", studentName: "Ibrahim Musa", courseTitle: "Training Lab 2 - Python", requestDate: "Feb 12, 2026", position: 2 },
-    { id: "w-3", studentName: "Ngozi Obi", courseTitle: "Cybersecurity", requestDate: "Feb 14, 2026", position: 3 },
-    { id: "w-4", studentName: "Yusuf Abdullahi", courseTitle: "Data Science", requestDate: "Feb 15, 2026", position: 4 },
+    { id: "w-1", studentName: "Amaka Eze", courseTitle: "Full-stack Web Development", requestDate: "Feb 10, 2026", position: 1 },
+    { id: "w-2", studentName: "Ibrahim Musa", courseTitle: "Mobile App Development", requestDate: "Feb 12, 2026", position: 2 },
+    { id: "w-3", studentName: "Ngozi Obi", courseTitle: "Ethical Hacking and Penetration Testing", requestDate: "Feb 14, 2026", position: 3 },
+    { id: "w-4", studentName: "Yusuf Abdullahi", courseTitle: "Building AI-powered Applications", requestDate: "Feb 15, 2026", position: 4 },
 ];
 
 // ─── Question Bank ───
@@ -80,11 +80,11 @@ export const questionBank: QuestionBank[] = [
 
 // ─── Scoring Rules ───
 export const scoringRules: ScoringRule[] = [
-    { id: "sr-1", courseId: "1", courseTitle: "Tech Odyssey", passingScore: 70, totalQuestions: 20, timeLimit: 30 },
-    { id: "sr-2", courseId: "2", courseTitle: "Web Development", passingScore: 75, totalQuestions: 25, timeLimit: 40 },
-    { id: "sr-3", courseId: "3", courseTitle: "Python Programming", passingScore: 70, totalQuestions: 20, timeLimit: 30 },
-    { id: "sr-4", courseId: "14", courseTitle: "Cybersecurity", passingScore: 80, totalQuestions: 30, timeLimit: 45 },
-    { id: "sr-5", courseId: "13", courseTitle: "Data Science", passingScore: 75, totalQuestions: 25, timeLimit: 35 },
+    { id: "sr-1", courseId: "1", courseTitle: "Software Engineering", passingScore: 70, totalQuestions: 20, timeLimit: 30 },
+    { id: "sr-2", courseId: "2", courseTitle: "Full-stack Web Development", passingScore: 75, totalQuestions: 25, timeLimit: 40 },
+    { id: "sr-3", courseId: "3", courseTitle: "Mobile App Development", passingScore: 70, totalQuestions: 20, timeLimit: 30 },
+    { id: "sr-4", courseId: "6", courseTitle: "Ethical Hacking and Penetration Testing", passingScore: 80, totalQuestions: 30, timeLimit: 45 },
+    { id: "sr-5", courseId: "11", courseTitle: "Introduction to AI and ML", passingScore: 75, totalQuestions: 25, timeLimit: 35 },
 ];
 
 // ─── Sync Logs ───
@@ -98,11 +98,11 @@ export const syncLogs: SyncLog[] = [
 
 // ─── Audit Logs ───
 export const auditLogs: AuditLog[] = [
-    { id: "al-1", action: "Course Created", performedBy: "Prof. Eze Nwosu", role: "admin", target: "Generative AI", timestamp: "Feb 28, 2026, 10:00 AM", details: "New course added to catalog with 1-month duration." },
+    { id: "al-1", action: "Course Created", performedBy: "Prof. Eze Nwosu", role: "admin", target: "No-Code AI Tools for Professionals", timestamp: "Feb 28, 2026, 10:00 AM", details: "New course added to catalog with 4-week duration." },
     { id: "al-2", action: "User Role Changed", performedBy: "Prof. Eze Nwosu", role: "admin", target: "Oluwaseun Fadare", timestamp: "Feb 27, 2026, 3:30 PM", details: "Role changed from Student to Instructor." },
-    { id: "al-3", action: "Waitlist Promoted", performedBy: "Prof. Eze Nwosu", role: "admin", target: "Amaka Eze → Web Development", timestamp: "Feb 27, 2026, 1:15 PM", details: "Student promoted from waitlist position #1." },
+    { id: "al-3", action: "Waitlist Promoted", performedBy: "Prof. Eze Nwosu", role: "admin", target: "Amaka Eze → Full-stack Web Development", timestamp: "Feb 27, 2026, 1:15 PM", details: "Student promoted from waitlist position #1." },
     { id: "al-4", action: "Attendance Override", performedBy: "Dr. Funke Akindele", role: "instructor", target: "Ibrahim Musa", timestamp: "Feb 26, 2026, 5:00 PM", details: "Manual attendance marked as present for missed session." },
-    { id: "al-5", action: "Test Score Override", performedBy: "Prof. Eze Nwosu", role: "admin", target: "Halima Bello → Python Programming", timestamp: "Feb 26, 2026, 2:00 PM", details: "Test score manually overridden from 65% to Pass." },
-    { id: "al-6", action: "Course Updated", performedBy: "Prof. Eze Nwosu", role: "admin", target: "Cybersecurity", timestamp: "Feb 25, 2026, 11:30 AM", details: "Capacity increased from 15 to 20 seats." },
+    { id: "al-5", action: "Test Score Override", performedBy: "Prof. Eze Nwosu", role: "admin", target: "Halima Bello → Mobile App Development", timestamp: "Feb 26, 2026, 2:00 PM", details: "Test score manually overridden from 65% to Pass." },
+    { id: "al-6", action: "Course Updated", performedBy: "Prof. Eze Nwosu", role: "admin", target: "Cybersecurity Fundamentals", timestamp: "Feb 25, 2026, 11:30 AM", details: "Capacity increased from 28 to 32 seats." },
     { id: "al-7", action: "User Suspended", performedBy: "Prof. Eze Nwosu", role: "admin", target: "Halima Bello", timestamp: "Feb 24, 2026, 9:00 AM", details: "Account suspended for policy violation review." },
 ];

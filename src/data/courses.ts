@@ -3,229 +3,201 @@ import { Course, CourseMetadata, CourseModule, ModuleItem } from "./types";
 const SAMPLE_VIDEO = "https://www.w3schools.com/html/mov_bbb.mp4";
 const SAMPLE_PDF = "https://morth.nic.in/sites/default/files/dd12-13_0.pdf";
 
+const LOC = "Davidson Tech Academy, Oba Olagbegi Street, New Bodija";
+
+function introModule(courseId: string, moduleTitle: string): CourseModule {
+    return {
+        id: `${courseId}-1`,
+        title: moduleTitle,
+        items: [
+            { id: `${courseId}-1-1`, title: "Course overview", type: "video", url: SAMPLE_VIDEO },
+            { id: `${courseId}-1-2`, title: "Syllabus & resources", type: "pdf", url: SAMPLE_PDF },
+        ],
+    };
+}
+
 export const courses: Course[] = [
     {
         id: "1",
-        title: "Tech Odyssey",
-        description: "Master web development, python, and graphics in this comprehensive digital journey.",
-        duration: "3 months",
-        location: "Training Lab 1, Oba Olagbegi Street, New Bodija",
-        seats: { enrolled: 18, total: 25 },
-        category: "Software Development",
-        fees: { type: 'flat', amount: 150000 },
-        progress: 68,
-        modules: [
-            {
-                id: "1-1",
-                title: "Web Foundation (HTML/CSS/JS)",
-                items: [
-                    { id: "1-1-1", title: "Project Overview Video", type: 'video', url: SAMPLE_VIDEO },
-                    { id: "1-1-2", title: "Tech Roadmap PDF", type: 'pdf', url: SAMPLE_PDF }
-                ]
-            }
-        ]
+        title: "Software Engineering",
+        description: "Principles, patterns, and practices for building reliable software systems in teams.",
+        duration: "12 weeks",
+        location: LOC,
+        seats: { enrolled: 18, total: 28 },
+        category: "Software Engineering",
+        fees: { type: "flat", amount: 185000 },
+        progress: 42,
+        modules: [introModule("1", "Engineering fundamentals")],
     },
     {
         id: "2",
-        title: "Web Development",
-        description: "HTML, CSS, Java script, and real-world projects.",
-        duration: "3 months",
-        location: "Training Lab 1, Oba Olagbegi Street, New Bodija",
-        seats: { enrolled: 12, total: 20 },
-        category: "Software Development",
-        fees: { type: 'flat', amount: 200000 },
+        title: "Full-stack Web Development",
+        description: "Modern front-end and back-end stacks, APIs, databases, and deployment for production web apps.",
+        duration: "14 weeks",
+        location: LOC,
+        seats: { enrolled: 22, total: 30 },
+        category: "Web Development",
+        fees: { type: "flat", amount: 220000 },
         progress: 0,
-        modules: [
-            {
-                id: "2-1",
-                title: "Frontend Mastery",
-                items: [
-                    { id: "2-1-1", title: "Flexbox & Grid Video", type: 'video', url: SAMPLE_VIDEO }
-                ]
-            }
-        ]
+        modules: [introModule("2", "Web stack orientation")],
     },
     {
         id: "3",
-        title: "Python Programming",
-        description: "Language basics to real-world applications.",
-        duration: "3 months",
-        location: "Training Lab 1, Oba Olagbegi Street, New Bodija",
-        seats: { enrolled: 15, total: 20 },
-        category: "Software Development",
-        fees: { type: 'flat', amount: 150000 },
-        progress: 12,
-        modules: [
-            { id: "3-1", title: "Python Basics", items: [{ id: "3-1-1", title: "Syntax Video", type: 'video', url: SAMPLE_VIDEO }] }
-        ]
+        title: "Mobile App Development",
+        description: "Design and ship native and cross-platform mobile experiences with industry-standard tooling.",
+        duration: "10 weeks",
+        location: LOC,
+        seats: { enrolled: 14, total: 24 },
+        category: "Mobile Development",
+        fees: { type: "flat", amount: 195000 },
+        progress: 15,
+        modules: [introModule("3", "Mobile foundations")],
     },
     {
         id: "4",
-        title: "Digital Literacy",
-        description: "Basic Computer Operations, Online Security, Productivity Tools.",
-        duration: "1 month",
-        location: "Training Lab 1, Oba Olagbegi Street, New Bodija",
-        seats: { enrolled: 22, total: 30 },
-        category: "Digital Literacy",
-        fees: {
-            type: 'tiered',
-            tiers: [
-                { name: "Cohort", amount: 50000 },
-                { name: "Special", amount: 100000 }
-            ]
-        },
-        modules: [
-            { id: "4-1", title: "Digital Foundations", items: [{ id: "4-1-1", title: "OS Basics Video", type: 'video', url: SAMPLE_VIDEO }] }
-        ]
+        title: "Software Testing & QA Engineering",
+        description: "Test design, automation, CI quality gates, and release confidence for modern teams.",
+        duration: "8 weeks",
+        location: LOC,
+        seats: { enrolled: 11, total: 20 },
+        category: "QA & Testing",
+        fees: { type: "flat", amount: 145000 },
+        modules: [introModule("4", "QA lifecycle")],
     },
     {
         id: "5",
-        title: "ArcGIS & Spatial Analysis",
-        description: "Mapping and spatial data analysis.",
-        duration: "1 month",
-        location: "Davidson Tech Academy, Oba Olagbegi Street, New Bodija",
-        seats: { enrolled: 5, total: 10 },
-        category: "Data Science",
-        fees: { type: 'flat', amount: 50000 },
-        modules: [
-            { id: "5-1", title: "ArcGIS Intro", items: [{ id: "5-1-1", title: "Mapping Video", type: 'video', url: SAMPLE_VIDEO }] }
-        ]
+        title: "Cybersecurity Fundamentals",
+        description: "Threat models, secure design, identity, and incident readiness for aspiring security professionals.",
+        duration: "8 weeks",
+        location: LOC,
+        seats: { enrolled: 20, total: 32 },
+        category: "Cybersecurity",
+        fees: { type: "flat", amount: 165000 },
+        modules: [introModule("5", "Security foundations")],
     },
     {
         id: "6",
-        title: "Data Analysis / Data Analytics",
-        description: "SPSS, Excel, Power BI for data insights.",
-        duration: "5 weeks",
-        location: "Davidson Tech Academy, Oba Olagbegi Street, New Bodija",
-        seats: { enrolled: 10, total: 15 },
-        category: "Data Science",
-        fees: {
-            type: 'tiered',
-            tiers: [
-                { name: "Cohort", amount: 80000 },
-                { name: "Special", amount: 150000 }
-            ]
-        },
-        modules: [
-            { id: "6-1", title: "Data Tools", items: [{ id: "6-1-1", title: "Power BI Basics", type: 'video', url: SAMPLE_VIDEO }] }
-        ]
+        title: "Ethical Hacking and Penetration Testing",
+        description: "Hands-on labs in reconnaissance, exploitation, reporting, and responsible disclosure.",
+        duration: "10 weeks",
+        location: LOC,
+        seats: { enrolled: 16, total: 22 },
+        category: "Cybersecurity",
+        fees: { type: "flat", amount: 240000 },
+        modules: [introModule("6", "Pen-test methodology")],
     },
     {
         id: "7",
-        title: "DATA PROCESSING",
-        description: "Excel, Word, PowerPoint, SPSS mastery.",
-        duration: "8 weeks",
-        location: "Davidson Tech Academy, Oba Olagbegi Street, New Bodija",
-        seats: { enrolled: 8, total: 15 },
-        category: "Digital Literacy",
-        fees: { type: 'flat', amount: 100000 },
-        modules: [
-            { id: "7-1", title: "Word & Excel", items: [{ id: "7-1-1", title: "Excel Formulas", type: 'video', url: SAMPLE_VIDEO }] }
-        ]
+        title: "GRC, IT Audit & Cloud Security",
+        description: "Governance, risk, compliance frameworks, audit evidence, and securing cloud workloads.",
+        duration: "9 weeks",
+        location: LOC,
+        seats: { enrolled: 9, total: 18 },
+        category: "Compliance & Cloud",
+        fees: {
+            type: "tiered",
+            tiers: [
+                { name: "Cohort", amount: 120000 },
+                { name: "Executive", amount: 195000 },
+            ],
+        },
+        modules: [introModule("7", "GRC overview")],
     },
     {
         id: "8",
-        title: "Digital Productivity Tools",
-        description: "Online collaboration and office suite mastery.",
-        duration: "1 month",
-        location: "Davidson Tech Academy, Oba Olagbegi Street, New Bodija",
-        seats: { enrolled: 12, total: 20 },
-        category: "Digital Literacy",
-        fees: {
-            type: 'tiered',
-            tiers: [
-                { name: "Cohort", amount: 80000 },
-                { name: "Special", amount: 150000 }
-            ]
-        },
-        modules: [
-            { id: "8-1", title: "Collaboration", items: [{ id: "8-1-1", title: "Teams & Zoom Video", type: 'video', url: SAMPLE_VIDEO }] }
-        ]
+        title: "Networking Fundamentals",
+        description: "TCP/IP, switching, routing concepts, and troubleshooting for real networks.",
+        duration: "6 weeks",
+        location: LOC,
+        seats: { enrolled: 19, total: 28 },
+        category: "Networking",
+        fees: { type: "flat", amount: 110000 },
+        modules: [introModule("8", "Network models")],
     },
     {
         id: "9",
-        title: "Generative AI",
-        description: "Leveraging AI for creative and professional tasks.",
-        duration: "1 month",
-        location: "Davidson Tech Academy, Oba Olagbegi Street, New Bodija",
-        seats: { enrolled: 15, total: 25 },
-        category: "AI & ML",
-        fees: { type: 'flat', amount: 100000 },
-        modules: [
-            { id: "9-1", title: "AI Basics", items: [{ id: "9-1-1", title: "Prompt Engineering", type: 'video', url: SAMPLE_VIDEO }] }
-        ]
+        title: "Fibre Optics Technician Programme",
+        description: "Splicing, testing, safety, and field standards for fibre infrastructure deployment.",
+        duration: "5 weeks",
+        location: LOC,
+        seats: { enrolled: 12, total: 16 },
+        category: "Networking",
+        fees: { type: "flat", amount: 135000 },
+        modules: [introModule("9", "Fibre safety & tools")],
     },
     {
         id: "10",
-        title: "Routing & Wireless Networking",
-        description: "MikroTik OS and wireless network management.",
-        duration: "2 weeks",
-        location: "Davidson Tech Academy, Oba Olagbegi Street, New Bodija",
-        seats: { enrolled: 6, total: 12 },
+        title: "MikroTik Routing and Network Administration",
+        description: "RouterOS configuration, VPNs, QoS, wireless, and day-to-day network administration.",
+        duration: "4 weeks",
+        location: LOC,
+        seats: { enrolled: 10, total: 18 },
         category: "Networking",
-        fees: { type: 'flat', amount: 100000 },
-        modules: [
-            { id: "10-1", title: "MikroTik Setup", items: [{ id: "10-1-1", title: "Routing Intro", type: 'video', url: SAMPLE_VIDEO }] }
-        ]
+        fees: { type: "flat", amount: 125000 },
+        modules: [introModule("10", "RouterOS essentials")],
     },
     {
         id: "11",
-        title: "Basic Computer Networking",
-        description: "Foundational networking concepts.",
-        duration: "4 weeks",
-        location: "Davidson Tech Academy, Oba Olagbegi Street, New Bodija",
-        seats: { enrolled: 10, total: 20 },
-        category: "Networking",
-        fees: {
-            type: 'tiered',
-            tiers: [
-                { name: "Cohort", amount: 80000 },
-                { name: "Special", amount: 150000 }
-            ]
-        },
-        modules: [
-            { id: "11-1", title: "Networking Basics", items: [{ id: "11-1-1", title: "IP Addressing", type: 'video', url: SAMPLE_VIDEO }] }
-        ]
+        title: "Introduction to AI and ML",
+        description: "Core ideas in machine learning, data, evaluation, and responsible use of AI systems.",
+        duration: "8 weeks",
+        location: LOC,
+        seats: { enrolled: 24, total: 35 },
+        category: "AI & ML",
+        fees: { type: "flat", amount: 155000 },
+        progress: 8,
+        modules: [introModule("11", "ML workflow")],
+    },
+    {
+        id: "12",
+        title: "Building AI-powered Applications",
+        description: "Integrate models and APIs into applications with guardrails, UX, and monitoring.",
+        duration: "7 weeks",
+        location: LOC,
+        seats: { enrolled: 17, total: 26 },
+        category: "AI & ML",
+        fees: { type: "flat", amount: 175000 },
+        modules: [introModule("12", "App + model integration")],
     },
     {
         id: "13",
-        title: "Data Science",
-        description: "Analytics, modeling, and data-driven insights.",
-        duration: "4 months",
-        location: "Davidson Tech Academy, Oba Olagbegi Street, New Bodija",
-        seats: { enrolled: 12, total: 25 },
-        category: "Data Science",
-        fees: { type: 'flat', amount: 300000 },
-        modules: [
-            { id: "13-1", title: "Data Analysis", items: [{ id: "13-1-1", title: "Pandas Intro", type: 'video', url: SAMPLE_VIDEO }] }
-        ]
+        title: "No-Code AI Tools for Professionals",
+        description: "Ship workflows and prototypes faster using leading no-code and low-code AI platforms.",
+        duration: "4 weeks",
+        location: LOC,
+        seats: { enrolled: 21, total: 40 },
+        category: "AI & ML",
+        fees: {
+            type: "tiered",
+            tiers: [
+                { name: "Standard", amount: 85000 },
+                { name: "Pro track", amount: 125000 },
+            ],
+        },
+        modules: [introModule("13", "Tooling landscape")],
     },
     {
         id: "14",
-        title: "Cybersecurity",
-        description: "Network security and ethical hacking.",
-        duration: "4 months",
-        location: "Davidson Tech Academy, Oba Olagbegi Street, New Bodija",
-        seats: { enrolled: 8, total: 20 },
-        category: "Cybersecurity",
-        fees: { type: 'flat', amount: 300000 },
-        modules: [
-            { id: "14-1", title: "Security Labs", items: [{ id: "14-1-1", title: "Auth Systems", type: 'video', url: SAMPLE_VIDEO }] }
-        ]
+        title: "Low-Level Programming and Computer Architecture",
+        description: "Memory, instruction sets, performance, and systems thinking close to the hardware.",
+        duration: "10 weeks",
+        location: LOC,
+        seats: { enrolled: 8, total: 16 },
+        category: "Systems Programming",
+        fees: { type: "flat", amount: 160000 },
+        modules: [introModule("14", "Architecture & C")],
     },
     {
         id: "15",
-        title: "Digital Marketing",
-        description: "Social media, SEO, and digital growth strategies.",
-        duration: "4 months",
-        location: "Davidson Tech Academy, Oba Olagbegi Street, New Bodija",
-        seats: { enrolled: 20, total: 30 },
-        category: "Digital Literacy",
-        fees: { type: 'flat', amount: 300000 },
-        modules: [
-            { id: "15-1", title: "SEO Strategy", items: [{ id: "15-1-1", title: "Search Engines", type: 'video', url: SAMPLE_VIDEO }] }
-        ]
-    }
+        title: "Product Management & Design Thinking",
+        description: "Discovery, roadmaps, metrics, and human-centred design for digital products.",
+        duration: "6 weeks",
+        location: LOC,
+        seats: { enrolled: 15, total: 24 },
+        category: "Product & Design",
+        fees: { type: "flat", amount: 140000 },
+        modules: [introModule("15", "Product discovery")],
+    },
 ];
 
 export const courseMetadata: CourseMetadata = {
@@ -235,14 +207,9 @@ export const courseMetadata: CourseMetadata = {
     facilities: [
         "State-of-the-art computers",
         "Conducive environment",
-        "Seasoned instructors"
+        "Seasoned instructors",
     ],
-    contacts: [
-        "0803-302-7479",
-        "0802-924-8172",
-        "0806-273-3470"
-    ]
+    contacts: ["0803-302-7479", "0802-924-8172", "0806-273-3470"],
 };
 
-// Re-export types for compatibility
 export type { Course, CourseMetadata, CourseModule, ModuleItem };

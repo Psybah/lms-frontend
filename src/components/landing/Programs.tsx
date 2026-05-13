@@ -2,37 +2,47 @@ import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { MicroscopeIcon, HealthIcon, Chart02Icon, Briefcase01Icon, Target01Icon, Mortarboard02Icon, ArrowLeft01Icon, ArrowRight01Icon } from "hugeicons-react";
+import {
+    Target01Icon,
+    BookOpen01Icon,
+    Chart02Icon,
+    Briefcase01Icon,
+    Mortarboard02Icon,
+    MicroscopeIcon,
+    ArrowLeft01Icon,
+    ArrowRight01Icon,
+} from "hugeicons-react";
 
-const programs = [
+/** Six featured pathways for the landing carousel (subset of full catalog). */
+const featuredPrograms = [
     {
-        title: "Research Methods & Scientific Writing",
-        description: "Build the foundational skills to design rigorous studies, analyse data, and communicate findings clearly to academic and professional audiences.",
-        icon: MicroscopeIcon,
-    },
-    {
-        title: "Health & Safety Compliance",
-        description: "Mandatory and elective programmes covering regulatory standards, workplace safety protocols, and risk management frameworks.",
-        icon: HealthIcon,
-    },
-    {
-        title: "Data Analysis & Reporting",
-        description: "From spreadsheet literacy to statistical modelling — practical training programmes that turn raw data into actionable insights.",
-        icon: Chart02Icon,
-    },
-    {
-        title: "Leadership & Professional Development",
-        description: "Structured courses in organisational leadership, communication, project management, and decision-making for career advancement.",
-        icon: Briefcase01Icon,
-    },
-    {
-        title: "Technical Skills & Engineering",
-        description: "Hands-on training in engineering practices, technical documentation, and discipline-specific tools across multiple specialisations.",
+        title: "Full-stack Web Development",
+        description: "Modern front-end and back-end stacks, APIs, and deployment—build production-ready web applications.",
         icon: Target01Icon,
     },
     {
-        title: "Academic & Continuing Education",
-        description: "Refresher courses, specialisation tracks, and certification pathways designed for working professionals seeking to upskill.",
+        title: "Ethical Hacking and Penetration Testing",
+        description: "Hands-on labs in reconnaissance, exploitation, and responsible reporting for aspiring security specialists.",
+        icon: Chart02Icon,
+    },
+    {
+        title: "Introduction to AI and ML",
+        description: "Core machine learning concepts, data pipelines, evaluation, and responsible use of AI in real projects.",
+        icon: MicroscopeIcon,
+    },
+    {
+        title: "Mobile App Development",
+        description: "Design and ship native and cross-platform mobile experiences with industry-standard tooling.",
+        icon: BookOpen01Icon,
+    },
+    {
+        title: "Software Engineering",
+        description: "Principles, patterns, and team practices for building reliable, maintainable software systems.",
+        icon: Briefcase01Icon,
+    },
+    {
+        title: "Cybersecurity Fundamentals",
+        description: "Threat models, secure design, identity, and incident readiness—your foundation in security.",
         icon: Mortarboard02Icon,
     },
 ];
@@ -52,26 +62,24 @@ export function Programs() {
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <div className="text-center space-y-4 mb-16">
                     <Badge variant="secondary" className="bg-accent/30 text-primary border-none text-xs font-medium px-3 py-1 rounded-full">
-                        Programme Areas
+                        Featured courses
                     </Badge>
                     <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-slate-900">
                         What Davidson Tech Academy offers
                     </h2>
                     <p className="text-slate-500 max-w-xl mx-auto font-normal text-base leading-relaxed">
-                        Our programmes span six core disciplines <br className="hidden lg:block" /> structured to meet you where you are and take you further.
+                        A snapshot of our most in-demand pathways—explore the full catalog in the learner dashboard.
                     </p>
                 </div>
 
                 <div className="relative">
-                    {/* Horizontal Scroll Container */}
                     <div
                         ref={scrollContainerRef}
                         className="flex overflow-x-auto gap-4 pb-8 snap-x snap-mandatory hide-scrollbar pl-4 -ml-4 pr-4"
                         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                     >
-                        {programs.map((program, idx) => {
+                        {featuredPrograms.map((program, idx) => {
                             const isPrimary = idx % 2 === 0;
-                            /* Alternate: lighter brown, same family as primary #503723 */
                             const cardBg = isPrimary ? "!bg-primary" : "!bg-[#6E4E38]";
 
                             return (
@@ -97,7 +105,6 @@ export function Programs() {
                         })}
                     </div>
 
-                    {/* Scroll Controls */}
                     <div className="flex justify-center items-center gap-4 mt-8">
                         <button
                             onClick={() => scroll("left")}

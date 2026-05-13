@@ -14,7 +14,7 @@ export default function MyLearning() {
 
     // Mock purchased courses (e.g., first course)
     // In a real app, this would come from a user state or API
-    const purchasedCourseIds = ["1", "3"];
+    const purchasedCourseIds = ["1", "2"];
     const allCoursesWithLockState = courses.map(course => ({ ...course, isUnlocked: purchasedCourseIds.includes(course.id) }));
     const myCourses = allCoursesWithLockState.filter(c => c.isUnlocked);
     const hasPurchasedCourses = myCourses.length > 0;
@@ -25,7 +25,19 @@ export default function MyLearning() {
         return matchesSearch && matchesCategory;
     });
 
-    const categories = ["All Courses", "Software Development", "Data Science", "Digital Literacy", "Cybersecurity", "AI & ML", "Networking"];
+    const categories = [
+        "All Courses",
+        "Software Engineering",
+        "Web Development",
+        "Mobile Development",
+        "QA & Testing",
+        "Cybersecurity",
+        "Compliance & Cloud",
+        "Networking",
+        "AI & ML",
+        "Systems Programming",
+        "Product & Design",
+    ];
 
     return (
         <div className="flex flex-col gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
